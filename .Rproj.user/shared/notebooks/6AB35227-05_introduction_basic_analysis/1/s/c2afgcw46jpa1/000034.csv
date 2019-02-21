@@ -1,3 +1,0 @@
-"0",""
-"0","y = exp(0.07*x)"
-"0","plot(x,y, xlim = c(-40,40), ylim = c(0, max(y)*1.1), axes = F, yaxs = 'i', xlab = '', ylab = 'Complexity', mgp = c(1.5, 1, 0), lty = 1, type = 'l')"

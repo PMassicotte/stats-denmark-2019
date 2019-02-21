@@ -1,4 +1,0 @@
-"0","df2 <- tidyr::gather(df, y, value, -x) %>% filter(y != ""y"")"
-"0","p + geom_line(data = df2, aes(x = x, y = value, group = y, color = y)) +"
-"0","  theme(legend.position = ""none"")"
-"0",""

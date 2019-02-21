@@ -1,8 +1,0 @@
-"0","# Function to calculate PDF"
-"0","pdf_normal <- function(x, sd, u){"
-"0","  "
-"0","  y <- (1 / (sd * sqrt(2 * pi))) * exp(-(((x - u)^2)/(2 * sd^2)))"
-"0","  "
-"0","  return(y)"
-"0","}"
-"0",""

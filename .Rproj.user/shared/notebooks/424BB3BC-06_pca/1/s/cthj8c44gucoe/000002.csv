@@ -1,3 +1,0 @@
-"0","library(car)"
-"0","dataEllipse(mydata$mpg,mydata$drat, levels = 0.95, xlim = c(5, 35), ylim = c(2, 5), xlab = ""mpg"", ylab = ""drat"")"
-"0",""

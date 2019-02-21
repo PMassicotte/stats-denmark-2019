@@ -1,1 +1,0 @@
-"0","segments(x[which(y == max(y))], 0, x[which(y == max(y))], max(y), lty = 2, col = 'red', lwd = 0.5)"

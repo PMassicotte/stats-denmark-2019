@@ -1,2 +1,0 @@
-"0","# Predicting transformed species using all variables contained in env"
-"0","my_rda <- rda(spe_hellinger ~ ., data = env)"

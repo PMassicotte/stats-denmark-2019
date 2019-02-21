@@ -1,4 +1,0 @@
-"0","p + geom_text(aes("
-"0","  y = ifelse((y - y_hat) > 0, y + 0.5, y - 0.5),"
-"0","  label = paste(""Y["", x, ""]"")"
-"0","), parse = TRUE, color = ""red"")"

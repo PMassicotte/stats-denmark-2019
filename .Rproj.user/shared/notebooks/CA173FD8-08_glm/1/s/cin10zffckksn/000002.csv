@@ -1,4 +1,0 @@
-"0","ggplot(temperature, aes(x = cet, y = mean_temperature_c)) +"
-"0","  geom_point() +"
-"0","  geom_smooth(method = ""loess"") +"
-"0","  scale_x_date()"

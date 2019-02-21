@@ -1,2 +1,0 @@
-"0","p + geom_point(aes(y = y_hat, color = ""Predicted\nvalues""), size = 4) +"
-"0","  labs(color = """")"

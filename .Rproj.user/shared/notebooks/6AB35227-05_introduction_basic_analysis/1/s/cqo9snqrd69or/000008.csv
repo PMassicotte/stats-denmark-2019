@@ -1,3 +1,0 @@
-"0","# city miles per gallon as a function of number of cylinders"
-"0","ggplot(mpg, aes(x = factor(cyl), y = cty)) +"
-"0","  geom_boxplot()"

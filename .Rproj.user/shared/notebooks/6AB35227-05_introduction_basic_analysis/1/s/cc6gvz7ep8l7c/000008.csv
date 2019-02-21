@@ -1,8 +1,0 @@
-"0",""
-"0","par(mar = c(4, 4, 1, 1))"
-"0",""
-"0","x <- dat$x"
-"0","y <- dat$y"
-"0","lm3 <- lm(y ~ x)"
-"0",""
-"0","plot(x, residuals(lm3), xlim = c(0, 105), ylim = c(-15, 15), pch = ""."", cex = 5)"

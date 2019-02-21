@@ -1,2 +1,0 @@
-"0","op <- par(mfrow = c(2,2), mar = c(0, 0, 0, 0))"
-"0","showvarparts(2)"

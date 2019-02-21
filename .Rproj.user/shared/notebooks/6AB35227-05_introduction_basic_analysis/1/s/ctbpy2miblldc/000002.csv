@@ -1,2 +1,0 @@
-"0","# Multiple regression for cyl"
-"0","reg1 <- lm(cyl ~ disp + hp + drat + wt + qsec, data = mtcars)"
