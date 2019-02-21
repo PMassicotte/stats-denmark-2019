@@ -1,0 +1,4 @@
+"0",""
+"0","hist(temperature$mean_temperature_c, freq = FALSE, "
+"0","     main = ""Normal probability curve"", "
+"0","     xlab = ""Temperature (C)"")"

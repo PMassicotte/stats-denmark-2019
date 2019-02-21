@@ -1,0 +1,2 @@
+"0","# We can use the log tranformation to normalize our data"
+"0","InsectSprays2 <- mutate(InsectSprays2, count_norm = log10(count + 1))"

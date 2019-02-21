@@ -1,0 +1,1 @@
+"0","plot(mpg$hwy, residuals(lm1)) # Check if any patterns in residuals"

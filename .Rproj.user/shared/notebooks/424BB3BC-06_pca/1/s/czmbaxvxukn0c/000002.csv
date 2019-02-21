@@ -1,0 +1,2 @@
+"0","mydata <- head(mtcars[, 1:7])"
+"0","mydata"

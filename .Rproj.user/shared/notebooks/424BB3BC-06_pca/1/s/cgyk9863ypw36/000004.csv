@@ -1,0 +1,3 @@
+"0",""
+"0","# add a line representing mean value of all eigenvalues"
+"0","abline(h = mean(my_pca$CA$eig), col = ""red"") "

@@ -1,0 +1,2 @@
+"0","group_by(mpg, factor(cyl)) %>% "
+"0","  summarise(mean_mpg = mean(cty))"

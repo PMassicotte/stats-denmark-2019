@@ -1,0 +1,2 @@
+"0",""
+"0","lines(density(temperature$mean_temperature_c, na.rm = TRUE), col = ""red"", lwd = 3)"

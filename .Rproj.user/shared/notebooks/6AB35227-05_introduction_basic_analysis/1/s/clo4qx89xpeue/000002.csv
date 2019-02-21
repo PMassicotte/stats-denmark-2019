@@ -1,0 +1,4 @@
+"0","library(packfor)"
+"0",""
+"0","x <- mtcars[, 2:7]  # Extract the possible predictors"
+"0","y <- mtcars$mpg     # Extract the response variable"

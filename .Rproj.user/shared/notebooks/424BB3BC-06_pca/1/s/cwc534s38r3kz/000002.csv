@@ -1,0 +1,2 @@
+"0","# Extract two variables from mtcars"
+"0","mydata <- mtcars[, c(""mpg"", ""drat"")]"

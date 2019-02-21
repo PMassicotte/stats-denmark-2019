@@ -1,0 +1,3 @@
+"0","temperature <- read_csv(""data/temp_roskilde_2015.csv"")"
+"0","temperature <- janitor::clean_names(temperature)"
+"0","temperature$cet <- as.Date(temperature$cet, format = ""%Y-%m-%d"")"

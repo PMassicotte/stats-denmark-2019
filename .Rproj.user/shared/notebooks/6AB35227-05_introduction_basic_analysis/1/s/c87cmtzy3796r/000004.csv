@@ -1,0 +1,6 @@
+"0","pr2 <- pr2 + "
+"0","  geom_point(aes(y = r2adj, color = ""Adjusted R2"")) +"
+"0","  geom_line(aes(y = r2adj, color = ""Adjusted R2""))"
+"0",""
+"0","pr2"
+"0",""

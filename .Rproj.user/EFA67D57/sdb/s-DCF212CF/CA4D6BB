@@ -1,0 +1,18 @@
+{
+    "contents" : "counts <- c(18,17,15,20,10,20,25,13,12)\noutcome <- gl(3,1,9)\ntreatment <- gl(3,3)\nprint(d.AD <- data.frame(treatment, outcome, counts))\nglm.D93 <- glm(counts ~ outcome + treatment, family = poisson())\n\nanova(glm.D93)\n\naov(glm.D93)\nglmm",
+    "created" : 1452858610021.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "899616022",
+    "id" : "CA4D6BB",
+    "lastKnownWriteTime" : 0,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

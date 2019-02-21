@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1549495231137.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2395118025",
+    "id" : "62121B7F",
+    "lastKnownWriteTime" : 1549496141,
+    "last_content_update" : 1549496141385,
+    "path" : "D:/work-ulaval/rmarkdown_templates/revealjs/test5.Rmd",
+    "project_path" : null,
+    "properties" : {
+        "cursorPosition" : "8,25",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

@@ -1,0 +1,3 @@
+"0","InsectSprays2 %>% "
+"0","  ggplot(aes(x = spray, y = count)) +"
+"0","  geom_boxplot()"

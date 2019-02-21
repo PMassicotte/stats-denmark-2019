@@ -1,0 +1,5 @@
+"0","lines(density(temperature$mean_temperature_c, na.rm = TRUE), col = ""red"", lwd = 3)
+"
+"2","Error in plot.xy(xy.coords(x, y), type = type, ...) : 
+  plot.new has not been called yet
+"

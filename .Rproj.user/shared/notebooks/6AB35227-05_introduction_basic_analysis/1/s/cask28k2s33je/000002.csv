@@ -1,0 +1,15 @@
+"0","model2_temp <- forward.sel(y, x, alpha = 1, "
+"0","                           R2more = 0.0000000001, "
+"0","                           adjR2thresh = 1)"
+"1","Testing variable 1
+"
+"1","Testing variable 2
+"
+"1","Testing variable 3
+"
+"1","Testing variable 4
+"
+"1","Testing variable 5
+"
+"1","Testing variable 6
+"

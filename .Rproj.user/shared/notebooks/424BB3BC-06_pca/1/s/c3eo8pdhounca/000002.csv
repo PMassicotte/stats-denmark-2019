@@ -1,0 +1,17 @@
+"0","print(xtable::xtable(head(mtcars, 10)[, 1:7]), type = ""html"", NA.string = ""NA"")"
+"1","<!-- html table generated in R 3.5.2 by xtable 1.8-2 package -->
+<!-- Mon Feb 18 15:45:02 2019 -->
+<table border=1>
+<tr> <th>  </th> <th> mpg </th> <th> cyl </th> <th> disp </th> <th> hp </th> <th> drat </th> <th> wt </th> <th> qsec </th>  </tr>
+  <tr> <td align=""right""> Mazda RX4 </td> <td align=""right""> 21.00 </td> <td align=""right""> 6.00 </td> <td align=""right""> 160.00 </td> <td align=""right""> 110.00 </td> <td align=""right""> 3.90 </td> <td align=""right""> 2.62 </td> <td align=""right""> 16.46 </td> </tr>
+  <tr> <td align=""right""> Mazda RX4 Wag </td> <td align=""right""> 21.00 </td> <td align=""right""> 6.00 </td> <td align=""right""> 160.00 </td> <td align=""right""> 110.00 </td> <td align=""right""> 3.90 </td> <td align=""right""> 2.88 </td> <td align=""right""> 17.02 </td> </tr>
+  <tr> <td align=""right""> Datsun 710 </td> <td align=""right""> 22.80 </td> <td align=""right""> 4.00 </td> <td align=""right""> 108.00 </td> <td align=""right""> 93.00 </td> <td align=""right""> 3.85 </td> <td align=""right""> 2.32 </td> <td align=""right""> 18.61 </td> </tr>
+  <tr> <td align=""right""> Hornet 4 Drive </td> <td align=""right""> 21.40 </td> <td align=""right""> 6.00 </td> <td align=""right""> 258.00 </td> <td align=""right""> 110.00 </td> <td align=""right""> 3.08 </td> <td align=""right""> 3.21 </td> <td align=""right""> 19.44 </td> </tr>
+  <tr> <td align=""right""> Hornet Sportabout </td> <td align=""right""> 18.70 </td> <td align=""right""> 8.00 </td> <td align=""right""> 360.00 </td> <td align=""right""> 175.00 </td> <td align=""right""> 3.15 </td> <td align=""right""> 3.44 </td> <td align=""right""> 17.02 </td> </tr>
+  <tr> <td align=""right""> Valiant </td> <td align=""right""> 18.10 </td> <td align=""right""> 6.00 </td> <td align=""right""> 225.00 </td> <td align=""right""> 105.00 </td> <td align=""right""> 2.76 </td> <td align=""right""> 3.46 </td> <td align=""right""> 20.22 </td> </tr>
+  <tr> <td align=""right""> Duster 360 </td> <td align=""right""> 14.30 </td> <td align=""right""> 8.00 </td> <td align=""right""> 360.00 </td> <td align=""right""> 245.00 </td> <td align=""right""> 3.21 </td> <td align=""right""> 3.57 </td> <td align=""right""> 15.84 </td> </tr>
+  <tr> <td align=""right""> Merc 240D </td> <td align=""right""> 24.40 </td> <td align=""right""> 4.00 </td> <td align=""right""> 146.70 </td> <td align=""right""> 62.00 </td> <td align=""right""> 3.69 </td> <td align=""right""> 3.19 </td> <td align=""right""> 20.00 </td> </tr>
+  <tr> <td align=""right""> Merc 230 </td> <td align=""right""> 22.80 </td> <td align=""right""> 4.00 </td> <td align=""right""> 140.80 </td> <td align=""right""> 95.00 </td> <td align=""right""> 3.92 </td> <td align=""right""> 3.15 </td> <td align=""right""> 22.90 </td> </tr>
+  <tr> <td align=""right""> Merc 280 </td> <td align=""right""> 19.20 </td> <td align=""right""> 6.00 </td> <td align=""right""> 167.60 </td> <td align=""right""> 123.00 </td> <td align=""right""> 3.92 </td> <td align=""right""> 3.44 </td> <td align=""right""> 18.30 </td> </tr>
+   </table>
+"

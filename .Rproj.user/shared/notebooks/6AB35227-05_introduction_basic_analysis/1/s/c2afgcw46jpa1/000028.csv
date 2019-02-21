@@ -1,0 +1,7 @@
+"0",""
+"0","par(mfcol = c(1,3), mai = c(0.1,0.5,0.1,0.1), omi = c(0.5, 0.1, 0.1, 0.1), ps = 12, cex = 1)"
+"0",""
+"0","x = -40:40"
+"0","y = 1 /(1+exp(-0.15*x))"
+"0",""
+"0","plot(x,y, xlim = c(-40,40), ylim = c(0, max(y)*1.1), axes = F, yaxs = 'i', xlab = '', ylab = 'Performance', mgp = c(1.5, 1, 0), lty = 1, type = 'l')"

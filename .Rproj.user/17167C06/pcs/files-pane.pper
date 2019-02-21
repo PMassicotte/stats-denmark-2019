@@ -1,0 +1,13 @@
+{
+    "path" : "/media/persican/Philippe Massicotte/Phil/Postdoctorat/Danemark/courses/numerical ecology",
+    "sortOrder" : [
+        {
+            "ascending" : false,
+            "columnIndex" : 1
+        },
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}

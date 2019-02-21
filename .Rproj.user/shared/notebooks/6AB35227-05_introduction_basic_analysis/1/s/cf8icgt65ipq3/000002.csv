@@ -1,0 +1,2 @@
+"0","# city miles per gallon AS A FUNCTION of the grouping variable cyl"
+"0","my_aov <- aov(cty ~ factor(cyl), data = mpg)"

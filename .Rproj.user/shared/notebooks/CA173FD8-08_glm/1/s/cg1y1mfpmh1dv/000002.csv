@@ -1,0 +1,18 @@
+"0","print(xtable::xtable(head(temperature[, 1:7], 10)), "
+"0","      type = ""html"", NA.string = ""NA"")"
+"1","<!-- html table generated in R 3.5.2 by xtable 1.8-2 package -->
+<!-- Tue Feb 19 13:10:49 2019 -->
+<table border=1>
+<tr> <th>  </th> <th> cet </th> <th> max_temperature_c </th> <th> mean_temperature_c </th> <th> min_temperature_c </th> <th> dew_point_c </th> <th> mean_dew_point_c </th> <th> min_dewpoint_c </th>  </tr>
+  <tr> <td align=""right""> 1 </td> <td align=""right""> 16436.00 </td> <td align=""right""> 6.00 </td> <td align=""right""> 4.00 </td> <td align=""right""> 3.00 </td> <td align=""right""> 5.00 </td> <td align=""right""> 4.00 </td> <td align=""right""> 2.00 </td> </tr>
+  <tr> <td align=""right""> 2 </td> <td align=""right""> 16437.00 </td> <td align=""right""> 9.00 </td> <td align=""right""> 7.00 </td> <td align=""right""> 4.00 </td> <td align=""right""> 7.00 </td> <td align=""right""> 3.00 </td> <td align=""right""> 0.00 </td> </tr>
+  <tr> <td align=""right""> 3 </td> <td align=""right""> 16438.00 </td> <td align=""right""> 6.00 </td> <td align=""right""> 3.00 </td> <td align=""right""> 2.00 </td> <td align=""right""> 3.00 </td> <td align=""right""> 2.00 </td> <td align=""right""> 0.00 </td> </tr>
+  <tr> <td align=""right""> 4 </td> <td align=""right""> 16439.00 </td> <td align=""right""> 4.00 </td> <td align=""right""> 2.00 </td> <td align=""right""> 1.00 </td> <td align=""right""> 2.00 </td> <td align=""right""> -1.00 </td> <td align=""right""> -3.00 </td> </tr>
+  <tr> <td align=""right""> 5 </td> <td align=""right""> 16440.00 </td> <td align=""right""> 4.00 </td> <td align=""right""> 2.00 </td> <td align=""right""> 0.00 </td> <td align=""right""> 3.00 </td> <td align=""right""> 2.00 </td> <td align=""right""> 0.00 </td> </tr>
+  <tr> <td align=""right""> 6 </td> <td align=""right""> 16441.00 </td> <td align=""right""> 3.00 </td> <td align=""right""> 1.00 </td> <td align=""right""> -1.00 </td> <td align=""right""> 3.00 </td> <td align=""right""> 1.00 </td> <td align=""right""> 0.00 </td> </tr>
+  <tr> <td align=""right""> 7 </td> <td align=""right""> 16442.00 </td> <td align=""right""> 6.00 </td> <td align=""right""> 3.00 </td> <td align=""right""> 1.00 </td> <td align=""right""> 4.00 </td> <td align=""right""> 2.00 </td> <td align=""right""> 0.00 </td> </tr>
+  <tr> <td align=""right""> 8 </td> <td align=""right""> 16443.00 </td> <td align=""right""> 7.00 </td> <td align=""right""> 4.00 </td> <td align=""right""> 3.00 </td> <td align=""right""> 6.00 </td> <td align=""right""> 4.00 </td> <td align=""right""> 2.00 </td> </tr>
+  <tr> <td align=""right""> 9 </td> <td align=""right""> 16444.00 </td> <td align=""right""> 7.00 </td> <td align=""right""> 5.00 </td> <td align=""right""> 3.00 </td> <td align=""right""> 5.00 </td> <td align=""right""> 2.00 </td> <td align=""right""> 1.00 </td> </tr>
+  <tr> <td align=""right""> 10 </td> <td align=""right""> 16445.00 </td> <td align=""right""> 10.00 </td> <td align=""right""> 7.00 </td> <td align=""right""> 3.00 </td> <td align=""right""> 9.00 </td> <td align=""right""> 3.00 </td> <td align=""right""> -2.00 </td> </tr>
+   </table>
+"

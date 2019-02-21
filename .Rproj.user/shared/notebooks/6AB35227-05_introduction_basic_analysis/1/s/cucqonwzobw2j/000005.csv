@@ -1,0 +1,3 @@
+"0","ggplot(InsectSprays2, aes(x = count_norm)) +"
+"0","  geom_histogram() +"
+"0","  facet_wrap(~spray, scales = ""free"")"

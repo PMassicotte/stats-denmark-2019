@@ -1,0 +1,6 @@
+"0","# Subset the data to get only two groups"
+"0","InsectSprays2 <- dplyr::filter(InsectSprays, spray %in% c(""C"", ""F""))"
+"0",""
+"0","# Visualize the data"
+"0","ggplot(InsectSprays2, aes(x = spray, y = count)) +"
+"0","  geom_boxplot()"

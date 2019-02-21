@@ -1,0 +1,2 @@
+"0","knitr::kable(cor(my_pca$CA$u), "
+"0","             caption = ""Correlation coefficients between PC."")"

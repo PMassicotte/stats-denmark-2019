@@ -1,0 +1,15 @@
+"0","# Maximum r2 expected"
+"0","globalR2 <- model2_temp$AdjR2Cum[length(model2_temp$AdjR2Cum)] "
+"0",""
+"0","model2_final <- forward.sel(y, x, alpha = 0.05, R2thresh = 1, "
+"0","                            R2more = 0.001, adjR2thresh = globalR2, "
+"0","                            nperm = 999)"
+"1","Testing variable 1
+"
+"1","Testing variable 2
+"
+"1","Testing variable 3
+"
+"1","Procedure stopped (alpha criteria): pvalue for variable 3 is 0.134000 (superior to 0.050000)
+"
+"0","model2_final"

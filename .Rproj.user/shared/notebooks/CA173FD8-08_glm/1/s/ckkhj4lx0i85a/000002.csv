@@ -1,0 +1,4 @@
+"0","par(mfrow = c(1,2))"
+"0",""
+"0","hist(temperature$mean_temperature_c, xlab = ""Temperature (C)"", "
+"0","     main = ""Histogram of temperature"")"

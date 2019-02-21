@@ -1,0 +1,17 @@
+"0","print(xtable::xtable(head(mpg, 10)), type = ""html"", NA.string = ""NA"")"
+"1","<!-- html table generated in R 3.5.2 by xtable 1.8-2 package -->
+<!-- Mon Feb 18 14:57:39 2019 -->
+<table border=1>
+<tr> <th>  </th> <th> manufacturer </th> <th> model </th> <th> displ </th> <th> year </th> <th> cyl </th> <th> trans </th> <th> drv </th> <th> cty </th> <th> hwy </th> <th> fl </th> <th> class </th>  </tr>
+  <tr> <td align=""right""> 1 </td> <td> audi </td> <td> a4 </td> <td align=""right""> 1.80 </td> <td align=""right""> 1999 </td> <td align=""right"">   4 </td> <td> auto(l5) </td> <td> f </td> <td align=""right"">  18 </td> <td align=""right"">  29 </td> <td> p </td> <td> compact </td> </tr>
+  <tr> <td align=""right""> 2 </td> <td> audi </td> <td> a4 </td> <td align=""right""> 1.80 </td> <td align=""right""> 1999 </td> <td align=""right"">   4 </td> <td> manual(m5) </td> <td> f </td> <td align=""right"">  21 </td> <td align=""right"">  29 </td> <td> p </td> <td> compact </td> </tr>
+  <tr> <td align=""right""> 3 </td> <td> audi </td> <td> a4 </td> <td align=""right""> 2.00 </td> <td align=""right""> 2008 </td> <td align=""right"">   4 </td> <td> manual(m6) </td> <td> f </td> <td align=""right"">  20 </td> <td align=""right"">  31 </td> <td> p </td> <td> compact </td> </tr>
+  <tr> <td align=""right""> 4 </td> <td> audi </td> <td> a4 </td> <td align=""right""> 2.00 </td> <td align=""right""> 2008 </td> <td align=""right"">   4 </td> <td> auto(av) </td> <td> f </td> <td align=""right"">  21 </td> <td align=""right"">  30 </td> <td> p </td> <td> compact </td> </tr>
+  <tr> <td align=""right""> 5 </td> <td> audi </td> <td> a4 </td> <td align=""right""> 2.80 </td> <td align=""right""> 1999 </td> <td align=""right"">   6 </td> <td> auto(l5) </td> <td> f </td> <td align=""right"">  16 </td> <td align=""right"">  26 </td> <td> p </td> <td> compact </td> </tr>
+  <tr> <td align=""right""> 6 </td> <td> audi </td> <td> a4 </td> <td align=""right""> 2.80 </td> <td align=""right""> 1999 </td> <td align=""right"">   6 </td> <td> manual(m5) </td> <td> f </td> <td align=""right"">  18 </td> <td align=""right"">  26 </td> <td> p </td> <td> compact </td> </tr>
+  <tr> <td align=""right""> 7 </td> <td> audi </td> <td> a4 </td> <td align=""right""> 3.10 </td> <td align=""right""> 2008 </td> <td align=""right"">   6 </td> <td> auto(av) </td> <td> f </td> <td align=""right"">  18 </td> <td align=""right"">  27 </td> <td> p </td> <td> compact </td> </tr>
+  <tr> <td align=""right""> 8 </td> <td> audi </td> <td> a4 quattro </td> <td align=""right""> 1.80 </td> <td align=""right""> 1999 </td> <td align=""right"">   4 </td> <td> manual(m5) </td> <td> 4 </td> <td align=""right"">  18 </td> <td align=""right"">  26 </td> <td> p </td> <td> compact </td> </tr>
+  <tr> <td align=""right""> 9 </td> <td> audi </td> <td> a4 quattro </td> <td align=""right""> 1.80 </td> <td align=""right""> 1999 </td> <td align=""right"">   4 </td> <td> auto(l5) </td> <td> 4 </td> <td align=""right"">  16 </td> <td align=""right"">  25 </td> <td> p </td> <td> compact </td> </tr>
+  <tr> <td align=""right""> 10 </td> <td> audi </td> <td> a4 quattro </td> <td align=""right""> 2.00 </td> <td align=""right""> 2008 </td> <td align=""right"">   4 </td> <td> manual(m6) </td> <td> 4 </td> <td align=""right"">  20 </td> <td align=""right"">  28 </td> <td> p </td> <td> compact </td> </tr>
+   </table>
+"

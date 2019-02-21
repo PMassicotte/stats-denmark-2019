@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1549495605062.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3178093981",
+    "id" : "570C88CF",
+    "lastKnownWriteTime" : 1549495889,
+    "last_content_update" : 1549495889404,
+    "path" : "D:/work-ulaval/courses/denmark-2019/numerical ecology/02_introduction_r.Rmd",
+    "project_path" : "02_introduction_r.Rmd",
+    "properties" : {
+        "cursorPosition" : "10,8",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

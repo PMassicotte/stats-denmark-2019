@@ -1,0 +1,8 @@
+"0","# Adj-R2 using all env. variables"
+"0","r2a <- RsquareAdj(rda(spe_hellinger ~ ., data = env))$adj.r.squared"
+"0",""
+"0","# Adj-R2 after removing effect of topography"
+"0","r2b <- RsquareAdj(rda(spe_hellinger ~ pH + dur + pho + nit + amm + oxy + dbo + Condition(das + alt + pen + deb), data = env))$adj.r.squared"
+"0",""
+"0","# Adj-R2 after removing effect of water chemistry"
+"0","r2c <- RsquareAdj(rda(spe_hellinger ~ das + alt + pen + deb + Condition(pH + dur + pho + nit + amm + oxy + dbo), data = env))$adj.r.squared"

@@ -1,0 +1,1 @@
+"0","mod <- lm(y ~ x, data = df) # Define the model"
