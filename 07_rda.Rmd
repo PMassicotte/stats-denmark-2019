@@ -8,7 +8,7 @@ output:
     transition: convex
     highlight: kate
     center: true
-    self_contained: false
+    self_contained: true
     fig_width: 5
     fig_height: 4
     fig_caption: false
@@ -464,13 +464,14 @@ global_r2
 
 Perform the forward selection with $R^2_{adj} = `r round(global_r2, digits = 2)`$.
 
-```{r}
+```{r, tidy=FALSE}
 # Forward selection
-fs <- forward.sel(spe_hellinger,           # Y matrix
-                  env,                     # X matrix
-                  adjR2thresh = global_r2, # Set the adj.R2 threshold
-                  alpha = 0.001,           # Set alpha level
-                  nperm = 999)             # Number of permutations
+fs <- forward.sel(spe_hellinger, # Y matrix
+  env, # X matrix
+  adjR2thresh = global_r2, # Set the adj.R2 threshold
+  alpha = 0.001, # Set alpha level
+  nperm = 999  # Number of permutations
+)   
 ```
 
 ## Forward selection
@@ -552,7 +553,7 @@ vasc <- read.delim("http://goo.gl/UBcc5J", row.names = 1)
 chem <- read.delim("http://goo.gl/55gDIi", row.names = 1)
 ```
 
-```{r, eval = FALSE, echo = FALSE}
+```{r, eval = FALSE, echo = FALSE, tidy=FALSE}
 vasc_hellinger <- decostand(vasc, method = "hellinger")
 
 my_rda <- rda(vasc_hellinger ~ ., data = chem)
@@ -857,8 +858,8 @@ fs_topography <- forward.sel(spe_hellinger,
 #---------------------------------------------------------------------
 # Create new data frames with variables selection by the forward selection
 #---------------------------------------------------------------------
-env_water_selected <- select(env_water_chemistry, oxy, nit, amm)
-env_topo_selected <- select(env_topograhpy, das, alt, deb)
+env_water_selected <- dplyr::select(env_water_chemistry, oxy, nit, amm)
+env_topo_selected <- dplyr::select(env_topograhpy, das, alt, deb)
 
 #---------------------------------------------------------------------
 # Create the partial RDA

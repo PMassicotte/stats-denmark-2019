@@ -7,7 +7,7 @@ output:
     transition: convex
     highlight: kate
     center: true
-    self_contained: false
+    self_contained: true
     fig_width: 5
     fig_height: 4
     fig_caption: false
@@ -62,8 +62,7 @@ sin(pi / 2) # pi is a predefined constant in R (3.141593)
 
 Printed results are interesting, but not very useful if we can not reuse them.
 
-> In R, two operators (**=** , **<-** ) can be
-used to assign a value to a variable. However, by convention **<-** is preferred. Use keys **alt + -** to automatically insert the **<-** symbol. 
+> In R, two operators (**=** , **<-** ) can be used to assign a value to a variable. However, by convention **<-** is preferred. Use keys **alt + -** to automatically insert the **<-** symbol. 
 
 ```{r}
 x = 120 # Works, but not recommended by convention

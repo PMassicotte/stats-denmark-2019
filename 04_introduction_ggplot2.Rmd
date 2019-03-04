@@ -8,7 +8,7 @@ output:
     transition: convex
     highlight: kate
     center: true
-    self_contained: false
+    self_contained: true
     fig_width: 5
     fig_height: 4
     fig_caption: false

@@ -9,7 +9,7 @@ output:
     transition: convex
     highlight: kate
     center: true
-    self_contained: false
+    self_contained: true
     fig_width: 5
     fig_height: 4
     fig_caption: false
@@ -154,7 +154,7 @@ Relationships between geographical coordinates and bird diversity.
 
 ```{r, echo = FALSE}
 df %>% 
-  select(-site, -tree_diversity) %>% 
+  dplyr::select(-site, -tree_diversity) %>% 
   languageR::pairscor.fnc()
 ```
 
