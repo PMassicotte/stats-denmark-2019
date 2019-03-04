@@ -9,7 +9,7 @@ output:
     fig_width: 5
     highlight: zenburn
     incremental: yes
-    self_contained: false
+    # self_contained: false
     theme: moon
     transition: convex
 ---
