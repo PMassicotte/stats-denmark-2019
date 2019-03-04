@@ -8,12 +8,12 @@ output:
     transition: convex
     highlight: kate
     center: true
-    self_contained: true
+    self_contained: false
     fig_width: 5
     fig_height: 4
     fig_caption: false
     css: styles.css
-    keep_md: yes
+    keep_md: no
 ---
 
 ```{r setup, include = FALSE}
