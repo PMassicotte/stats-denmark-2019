@@ -1485,6 +1485,11 @@ color: #EFEFEF;
 }
 .reveal code {
 color: #E7AD52
+}
+.reveal section img {
+background: rgba(255, 255, 255, 0);
+border: 0px;
+box-shadow: 0 0 0px rgba(0, 0, 0, 0.15);
 }</style>
 
 <!-- Printing and PDF exports -->
@@ -1969,43 +1974,51 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <h4 id="question-1-1">Question #1</h4>
 <p>What is the value of:</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">x[<span class="dv">6</span>]</a></code></pre></div>
+</section>
+<section id="exercise-3" class="slide level2 exercises">
+<h2>Exercise</h2>
+<p>Given the vector <code>x</code>:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">-1</span>, <span class="dv">10</span>, <span class="fl">5.4</span>)</a></code></pre></div>
 <h4 id="question-2">Question #2</h4>
 <p>What is the value of:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">x[<span class="op">-</span><span class="dv">1</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">x[<span class="op">-</span><span class="dv">1</span>]</a></code></pre></div>
 </section>
 <section id="elements-of-vector-1" class="slide level2">
 <h2>Elements of vector</h2>
 <p>We can also apply a function to all elements of a vector.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">-1</span>, <span class="dv">10</span>, <span class="fl">5.4</span>)</a>
-<a class="sourceLine" id="cb21-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb21-3" data-line-number="3">x <span class="op">/</span><span class="st"> </span><span class="dv">2</span>   <span class="co"># Divide all elements of x by 2</span></a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">-1</span>, <span class="dv">10</span>, <span class="fl">5.4</span>)</a>
+<a class="sourceLine" id="cb22-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb22-3" data-line-number="3">x <span class="op">/</span><span class="st"> </span><span class="dv">2</span>   <span class="co"># Divide all elements of x by 2</span></a></code></pre></div>
 <pre><code>## [1]  0.5  2.0 -0.5  5.0  2.7</code></pre>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="kw">sin</span>(x)  <span class="co"># sin value of all elements of x</span></a></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1"><span class="kw">sin</span>(x)  <span class="co"># sin value of all elements of x</span></a></code></pre></div>
 <pre><code>## [1]  0.8414710 -0.7568025 -0.8414710 -0.5440211 -0.7727645</code></pre>
 </section>
 <section id="elements-of-vector-2" class="slide level2">
 <h2>Elements of vector</h2>
 <p>Vectors and matrices of the same size can be operated on arithmetically, with the operations acting element-wise.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">1</span>)  <span class="co"># vector 1</span></a>
-<a class="sourceLine" id="cb25-2" data-line-number="2">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">1</span>)  <span class="co"># vector 2</span></a>
-<a class="sourceLine" id="cb25-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb25-4" data-line-number="4">x <span class="op">+</span><span class="st"> </span>y</a></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">1</span>)  <span class="co"># vector 1</span></a>
+<a class="sourceLine" id="cb26-2" data-line-number="2">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">1</span>)  <span class="co"># vector 2</span></a>
+<a class="sourceLine" id="cb26-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb26-4" data-line-number="4">x <span class="op">+</span><span class="st"> </span>y</a></code></pre></div>
 <pre><code>## [1] 4 4 9 2</code></pre>
 </section>
-<section id="exercise-3" class="slide level2 exercises">
+<section id="exercise-4" class="slide level2 exercises">
 <h2>Exercise</h2>
 <h4 id="question-1-2">Question #1</h4>
 <p>What will happen when executing the following code:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">1</span>)  <span class="co"># vector 1</span></a>
-<a class="sourceLine" id="cb27-2" data-line-number="2">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">1</span>)        <span class="co"># vector 2</span></a>
-<a class="sourceLine" id="cb27-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb27-4" data-line-number="4">x <span class="op">+</span><span class="st"> </span>y</a></code></pre></div>
-<h4 id="question-2-1">Question #2</h4>
-<p>What will happen when executing the following code:</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">1</span>)  <span class="co"># vector 1</span></a>
-<a class="sourceLine" id="cb28-2" data-line-number="2">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>)     <span class="co"># vector 2</span></a>
+<a class="sourceLine" id="cb28-2" data-line-number="2">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">1</span>)        <span class="co"># vector 2</span></a>
 <a class="sourceLine" id="cb28-3" data-line-number="3"></a>
 <a class="sourceLine" id="cb28-4" data-line-number="4">x <span class="op">+</span><span class="st"> </span>y</a></code></pre></div>
+</section>
+<section id="exercise-5" class="slide level2 exercises">
+<h2>Exercise</h2>
+<h4 id="question-2-1">Question #2</h4>
+<p>What will happen when executing the following code:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">1</span>)  <span class="co"># vector 1</span></a>
+<a class="sourceLine" id="cb29-2" data-line-number="2">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>)     <span class="co"># vector 2</span></a>
+<a class="sourceLine" id="cb29-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb29-4" data-line-number="4">x <span class="op">+</span><span class="st"> </span>y</a></code></pre></div>
 </section>
 <section id="matrix" class="slide level2">
 <h2>Matrix</h2>
@@ -2029,12 +2042,12 @@ A_{m,n} =
 <section id="matrix-2" class="slide level2">
 <h2>Matrix</h2>
 <p>To understand how matrix work in R, lets create the following matrix <code>A</code>.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">1234</span>)</a>
-<a class="sourceLine" id="cb29-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb29-3" data-line-number="3"><span class="co"># Create a 5 by 5 matrix</span></a>
-<a class="sourceLine" id="cb29-4" data-line-number="4">A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">data =</span> <span class="kw">sample</span>(<span class="dv">25</span>), <span class="dt">nrow =</span> <span class="dv">5</span>, <span class="dt">ncol =</span> <span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb29-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb29-6" data-line-number="6">A</a></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">1234</span>)</a>
+<a class="sourceLine" id="cb30-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb30-3" data-line-number="3"><span class="co"># Create a 5 by 5 matrix</span></a>
+<a class="sourceLine" id="cb30-4" data-line-number="4">A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">data =</span> <span class="kw">sample</span>(<span class="dv">25</span>), <span class="dt">nrow =</span> <span class="dv">5</span>, <span class="dt">ncol =</span> <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb30-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb30-6" data-line-number="6">A</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5]
 ## [1,]    3   13   11   16    6
 ## [2,]   15    1    8   25   18
@@ -2045,27 +2058,27 @@ A_{m,n} =
 <section id="matrix-indexes" class="slide level2">
 <h2>Matrix indexes</h2>
 <p>Elements of a matrix can be accessed using the following scheme:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1">A[m, n] <span class="co"># Element located a line m and column n</span></a></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1">A[m, n] <span class="co"># Element located a line m and column n</span></a></code></pre></div>
 <p>For example, the value at position <span class="math inline">\(A_{3,1}\)</span> is:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1">A[<span class="dv">3</span>, <span class="dv">1</span>] <span class="co"># Return the value at line 3 and column 1</span></a></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1">A[<span class="dv">3</span>, <span class="dv">1</span>] <span class="co"># Return the value at line 3 and column 1</span></a></code></pre></div>
 <pre><code>## [1] 24</code></pre>
 </section>
 <section id="matrix-indexes-1" class="slide level2">
 <h2>Matrix indexes</h2>
 <p>If the line or row number is omitted, the corresponding vector at line or row will be returned.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1">A[<span class="dv">1</span>, ] <span class="co"># Returns all elements from the first line</span></a></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1">A[<span class="dv">1</span>, ] <span class="co"># Returns all elements from the first line</span></a></code></pre></div>
 <pre><code>## [1]  3 13 11 16  6</code></pre>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1">A[, <span class="dv">4</span>] <span class="co"># Returns all elements from the 4th column</span></a></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1">A[, <span class="dv">4</span>] <span class="co"># Returns all elements from the 4th column</span></a></code></pre></div>
 <pre><code>## [1] 16 25 10  2  7</code></pre>
 </section>
-<section id="exercise-4" class="slide level2 exercises">
+<section id="exercise-6" class="slide level2 exercises">
 <h2>Exercise</h2>
 <h4 id="question-1-3">Question #1</h4>
 <p>What is the value of:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1">A[<span class="dv">10</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1">A[<span class="dv">10</span>]</a></code></pre></div>
 <h4 id="question-2-2">Question #2</h4>
 <p>What is the value of:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1">A[, <span class="dv">-1</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1">A[, <span class="dv">-1</span>]</a></code></pre></div>
 </section>
 <section id="missing-values" class="slide level2">
 <h2>Missing values</h2>
@@ -2073,23 +2086,23 @@ A_{m,n} =
 <section id="missing-values-1" class="slide level2">
 <h2>Missing values</h2>
 <p>Missing values in R are represented by <code>NA</code> (not available). All operations performed on NA values will return the value <code>NA</code>.</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1"><span class="co"># Create a vector with one NA at the 4th position</span></a>
-<a class="sourceLine" id="cb40-2" data-line-number="2">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="ot">NA</span>, <span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb40-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb40-4" data-line-number="4">x <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="co"># Create a vector with one NA at the 4th position</span></a>
+<a class="sourceLine" id="cb41-2" data-line-number="2">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="ot">NA</span>, <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb41-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb41-4" data-line-number="4">x <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a></code></pre></div>
 <pre><code>## [1]  2  3  4 NA  6</code></pre>
 <p>NA can be easily identified with the <code>is.na()</code> function.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="kw">is.na</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1"><span class="kw">is.na</span>(x)</a></code></pre></div>
 <pre><code>## [1] FALSE FALSE FALSE  TRUE FALSE</code></pre>
 </section>
 <section id="operations-on-na" class="slide level2">
 <h2>Operations on NA</h2>
 <p>Most R functions will return <code>NA</code> if such values are present in the data.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="ot">NA</span>, <span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb44-2" data-line-number="2"><span class="kw">mean</span>(x) <span class="co"># Will returns NA</span></a></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="ot">NA</span>, <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb45-2" data-line-number="2"><span class="kw">mean</span>(x) <span class="co"># Will returns NA</span></a></code></pre></div>
 <pre><code>## [1] NA</code></pre>
 <p>You have to <strong>explicitly</strong> tell R what to do with <code>NA</code>. This is often done using the <code>na.rm</code> argument.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1"><span class="kw">mean</span>(x, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>) <span class="co"># Remove NA values before calculating the mean</span></a></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1"><span class="kw">mean</span>(x, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>) <span class="co"># Remove NA values before calculating the mean</span></a></code></pre></div>
 <pre><code>## [1] 2.75</code></pre>
 </section>
 <section id="logical-operators" class="slide level2">
@@ -2147,30 +2160,30 @@ A_{m,n} =
 </section>
 <section id="some-examples" class="slide level2">
 <h2>Some examples</h2>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1"><span class="dv">1</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span></a></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1"><span class="dv">1</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span></a></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)</a>
-<a class="sourceLine" id="cb50-2" data-line-number="2">x <span class="op">&lt;</span><span class="st"> </span><span class="dv">4</span></a></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)</a>
+<a class="sourceLine" id="cb51-2" data-line-number="2">x <span class="op">&lt;</span><span class="st"> </span><span class="dv">4</span></a></code></pre></div>
 <pre><code>## [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE</code></pre>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1">x <span class="op">!=</span><span class="st"> </span><span class="dv">4</span></a></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1">x <span class="op">!=</span><span class="st"> </span><span class="dv">4</span></a></code></pre></div>
 <pre><code>## [1]  TRUE  TRUE  TRUE FALSE  TRUE  TRUE</code></pre>
 </section>
 <section id="boolean" class="slide level2">
 <h2>Boolean</h2>
 <p>It is important to know that: <code>0 == FALSE</code> and <code>1 == TRUE</code>.</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1"><span class="dv">0</span> <span class="op">==</span><span class="st"> </span><span class="ot">FALSE</span> <span class="co"># 0 equal to FALSE</span></a></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" data-line-number="1"><span class="dv">0</span> <span class="op">==</span><span class="st"> </span><span class="ot">FALSE</span> <span class="co"># 0 equal to FALSE</span></a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1"><span class="dv">1</span> <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span>  <span class="co"># 1 equal to TRUE</span></a></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" data-line-number="1"><span class="dv">1</span> <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span>  <span class="co"># 1 equal to TRUE</span></a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </section>
 <section class="slide level2">
 
 <p>Logical operators can also be used on characters or strings.</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" data-line-number="1"><span class="st">&quot;Hi&quot;</span> <span class="op">==</span><span class="st"> &quot;hi&quot;</span> <span class="co"># R is case sensitive</span></a></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" data-line-number="1"><span class="st">&quot;Hi&quot;</span> <span class="op">==</span><span class="st"> &quot;hi&quot;</span> <span class="co"># R is case sensitive</span></a></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1"><span class="st">&quot;A&quot;</span> <span class="op">&gt;</span><span class="st"> &quot;B&quot;</span> <span class="co"># R uses alphabet position (index) to compare letters</span></a></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1"><span class="st">&quot;A&quot;</span> <span class="op">&gt;</span><span class="st"> &quot;B&quot;</span> <span class="co"># R uses alphabet position (index) to compare letters</span></a></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1"><span class="st">&quot;AB&quot;</span> <span class="op">&lt;</span><span class="st"> &quot;AC&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" data-line-number="1"><span class="st">&quot;AB&quot;</span> <span class="op">&lt;</span><span class="st"> &quot;AC&quot;</span></a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </section>
 <section id="logical-table" class="slide level2">
@@ -2221,16 +2234,16 @@ A_{m,n} =
 <section id="examples" class="slide level2">
 <h2>Examples</h2>
 <p>Logical operators can also be combined.</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1">(<span class="dv">1</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span>) <span class="op">&amp;</span><span class="st"> </span>(<span class="dv">2</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">1</span>) <span class="co"># If 1 &lt; 2 AND 2 &lt; 1.  TRUE and FALSE = FALSE</span></a></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1">(<span class="dv">1</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span>) <span class="op">&amp;</span><span class="st"> </span>(<span class="dv">2</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">1</span>) <span class="co"># If 1 &lt; 2 AND 2 &lt; 1.  TRUE and FALSE = FALSE</span></a></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1">(<span class="dv">1</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span>) <span class="op">|</span><span class="st"> </span>(<span class="dv">2</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">1</span>) <span class="co"># If 1 &lt; 2 OR 2 &lt; 1.  TRUE or FALSE = TRUE </span></a></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" data-line-number="1">(<span class="dv">1</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span>) <span class="op">|</span><span class="st"> </span>(<span class="dv">2</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">1</span>) <span class="co"># If 1 &lt; 2 OR 2 &lt; 1.  TRUE or FALSE = TRUE </span></a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </section>
-<section id="exercise-5" class="slide level2 exercises">
+<section id="exercise-7" class="slide level2 exercises">
 <h2>Exercise</h2>
 <h4 id="question-1-4">Question #1</h4>
 <p>What will be the result of the following code?</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1"><span class="op">!</span>(<span class="dv">10</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span>) <span class="op">|</span><span class="st"> </span>(<span class="dv">2</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>) <span class="op">&amp;</span><span class="st"> </span>(<span class="st">&quot;B&quot;</span> <span class="op">&gt;</span><span class="st"> &quot;A&quot;</span>) </a></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" data-line-number="1"><span class="op">!</span>(<span class="dv">10</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span>) <span class="op">|</span><span class="st"> </span>(<span class="dv">2</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>) <span class="op">&amp;</span><span class="st"> </span>(<span class="st">&quot;B&quot;</span> <span class="op">&gt;</span><span class="st"> &quot;A&quot;</span>) </a></code></pre></div>
 </section>
 <section id="functions" class="slide level2">
 <h2>Functions</h2>
@@ -2249,7 +2262,7 @@ A_{m,n} =
 <section id="schema-of-a-function-1" class="slide level2">
 <h2>Schema of a function</h2>
 <p>For example, whitin the following code, the <code>mean()</code> and <code>rnorm()</code> functions are used to calculate the average of 10 numbers generated randomly.</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" data-line-number="1"><span class="kw">mean</span>(<span class="kw">rnorm</span>(<span class="dv">10</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1"><span class="kw">mean</span>(<span class="kw">rnorm</span>(<span class="dv">10</span>))</a></code></pre></div>
 <pre><code>## [1] 0.1565971</code></pre>
 <p>We know what it does, but we do not know how it has been programmed internally.</p>
 </section>
@@ -2263,38 +2276,48 @@ A_{m,n} =
 <h2>Parameters order</h2>
 <p>The order of the parameters passed to a function is <strong>important</strong>. There are two ways for passing parameters to a function.</p>
 <h3 id="unnamed-approach">Unnamed approach</h3>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" data-line-number="1"><span class="kw">add</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="co"># R will automatically sets x = 1, y = 2, z = 3</span></a></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1"><span class="kw">add</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="co"># R will automatically sets x = 1, y = 2, z = 3</span></a></code></pre></div>
 <h3 id="named-approach">Named approach</h3>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1"><span class="kw">add</span>(<span class="dt">x =</span> <span class="dv">1</span>, <span class="dt">y =</span> <span class="dv">2</span>, <span class="dt">z =</span> <span class="dv">3</span>) <span class="co"># The named approach is usually a better way</span></a></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1"><span class="kw">add</span>(<span class="dt">x =</span> <span class="dv">1</span>, <span class="dt">y =</span> <span class="dv">2</span>, <span class="dt">z =</span> <span class="dv">3</span>) <span class="co"># The named approach is usually a better way</span></a></code></pre></div>
 </section>
 <section id="structure-of-a-function" class="slide level2">
 <h2>Structure of a function</h2>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1">my_function &lt;-<span class="st"> </span><span class="cf">function</span>(param1, param2, ...) {</a>
-<a class="sourceLine" id="cb73-2" data-line-number="2">  </a>
-<a class="sourceLine" id="cb73-3" data-line-number="3">  <span class="co"># Do something super cool with param1 and param2</span></a>
-<a class="sourceLine" id="cb73-4" data-line-number="4">  </a>
-<a class="sourceLine" id="cb73-5" data-line-number="5">  <span class="co"># Return the result(s) of what you did in the function</span></a>
-<a class="sourceLine" id="cb73-6" data-line-number="6">  <span class="kw">return</span>(...)</a>
-<a class="sourceLine" id="cb73-7" data-line-number="7">}</a></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1">my_function &lt;-<span class="st"> </span><span class="cf">function</span>(param1, param2, ...) {</a>
+<a class="sourceLine" id="cb74-2" data-line-number="2">  </a>
+<a class="sourceLine" id="cb74-3" data-line-number="3">  <span class="co"># Do something super cool with param1 and param2</span></a>
+<a class="sourceLine" id="cb74-4" data-line-number="4">  </a>
+<a class="sourceLine" id="cb74-5" data-line-number="5">  <span class="co"># Return the result(s) of what you did in the function</span></a>
+<a class="sourceLine" id="cb74-6" data-line-number="6">  <span class="kw">return</span>(...)</a>
+<a class="sourceLine" id="cb74-7" data-line-number="7">}</a></code></pre></div>
 <p>The function <code>return()</code> is used to return the final result(s) of a function.</p>
 </section>
 <section id="your-first-r-function" class="slide level2">
 <h2>Your first R function</h2>
 <p>Lets create a function that will sum 3 values.</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1">my_first_r_function &lt;-<span class="st"> </span><span class="cf">function</span>(x, y, z) </a>
-<a class="sourceLine" id="cb74-2" data-line-number="2">{</a>
-<a class="sourceLine" id="cb74-3" data-line-number="3">  <span class="co"># Do something here with arguments x, y, z</span></a>
-<a class="sourceLine" id="cb74-4" data-line-number="4">  result &lt;-<span class="st"> </span>x <span class="op">+</span><span class="st"> </span>y <span class="op">+</span><span class="st"> </span>z</a>
-<a class="sourceLine" id="cb74-5" data-line-number="5">  </a>
-<a class="sourceLine" id="cb74-6" data-line-number="6">  <span class="co"># Return the value of result</span></a>
-<a class="sourceLine" id="cb74-7" data-line-number="7">  <span class="kw">return</span>(result)</a>
-<a class="sourceLine" id="cb74-8" data-line-number="8">}</a>
-<a class="sourceLine" id="cb74-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb74-10" data-line-number="10"><span class="co"># x = 1, y = 2, z = 3</span></a>
-<a class="sourceLine" id="cb74-11" data-line-number="11"><span class="kw">my_first_r_function</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" data-line-number="1">my_first_r_function &lt;-<span class="st"> </span><span class="cf">function</span>(x, y, z) </a>
+<a class="sourceLine" id="cb75-2" data-line-number="2">{</a>
+<a class="sourceLine" id="cb75-3" data-line-number="3">  <span class="co"># Do something here with arguments x, y, z</span></a>
+<a class="sourceLine" id="cb75-4" data-line-number="4">  result &lt;-<span class="st"> </span>x <span class="op">+</span><span class="st"> </span>y <span class="op">+</span><span class="st"> </span>z</a>
+<a class="sourceLine" id="cb75-5" data-line-number="5">  </a>
+<a class="sourceLine" id="cb75-6" data-line-number="6">  <span class="co"># Return the value of result</span></a>
+<a class="sourceLine" id="cb75-7" data-line-number="7">  <span class="kw">return</span>(result)</a>
+<a class="sourceLine" id="cb75-8" data-line-number="8">}</a></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1"><span class="co"># x = 1, y = 2, z = 3</span></a>
+<a class="sourceLine" id="cb76-2" data-line-number="2"><span class="kw">my_first_r_function</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</a></code></pre></div>
 <pre><code>## [1] 6</code></pre>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1"><span class="co"># x = -3.141593, y = 0.9092974, z = 32</span></a>
-<a class="sourceLine" id="cb76-2" data-line-number="2"><span class="kw">my_first_r_function</span>(<span class="op">-</span>pi, <span class="kw">sin</span>(<span class="dv">2</span>), <span class="dv">32</span>)</a></code></pre></div>
+</section>
+<section id="your-first-r-function-1" class="slide level2">
+<h2>Your first R function</h2>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1">my_first_r_function &lt;-<span class="st"> </span><span class="cf">function</span>(x, y, z) </a>
+<a class="sourceLine" id="cb78-2" data-line-number="2">{</a>
+<a class="sourceLine" id="cb78-3" data-line-number="3">  <span class="co"># Do something here with arguments x, y, z</span></a>
+<a class="sourceLine" id="cb78-4" data-line-number="4">  result &lt;-<span class="st"> </span>x <span class="op">+</span><span class="st"> </span>y <span class="op">+</span><span class="st"> </span>z</a>
+<a class="sourceLine" id="cb78-5" data-line-number="5">  </a>
+<a class="sourceLine" id="cb78-6" data-line-number="6">  <span class="co"># Return the value of result</span></a>
+<a class="sourceLine" id="cb78-7" data-line-number="7">  <span class="kw">return</span>(result)</a>
+<a class="sourceLine" id="cb78-8" data-line-number="8">}</a></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" data-line-number="1"><span class="co"># x = -3.141593, y = 0.9092974, z = 32</span></a>
+<a class="sourceLine" id="cb79-2" data-line-number="2"><span class="kw">my_first_r_function</span>(<span class="op">-</span>pi, <span class="kw">sin</span>(<span class="dv">2</span>), <span class="dv">32</span>)</a></code></pre></div>
 <pre><code>## [1] 29.7677</code></pre>
 </section>
 <section id="quick-rstudio-tip" class="slide level2">
@@ -2313,32 +2336,32 @@ A_{m,n} =
 <section id="required-parameters" class="slide level2">
 <h2>Required parameters</h2>
 <p>In some cases, parameters of a function must be <strong>obligatory</strong> provided by the user.</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1"><span class="co"># x = 1, y = 2, z = 3</span></a>
-<a class="sourceLine" id="cb78-2" data-line-number="2"><span class="kw">my_first_r_function</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="co"># Call the function with 3 parameters.</span></a></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" data-line-number="1"><span class="co"># x = 1, y = 2, z = 3</span></a>
+<a class="sourceLine" id="cb81-2" data-line-number="2"><span class="kw">my_first_r_function</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="co"># Call the function with 3 parameters.</span></a></code></pre></div>
 <pre><code>## [1] 6</code></pre>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" data-line-number="1"><span class="co"># x = 1, y = 2, z = ???</span></a>
-<a class="sourceLine" id="cb80-2" data-line-number="2"><span class="kw">my_first_r_function</span>(<span class="dv">1</span>, <span class="dv">2</span>) <span class="co"># Call the function with only 2 parameters.</span></a></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" data-line-number="1"><span class="co"># x = 1, y = 2, z = ???</span></a>
+<a class="sourceLine" id="cb83-2" data-line-number="2"><span class="kw">my_first_r_function</span>(<span class="dv">1</span>, <span class="dv">2</span>) <span class="co"># Call the function with only 2 parameters.</span></a></code></pre></div>
 <pre><code>## Error in my_first_r_function(1, 2): argument &quot;z&quot; is missing, with no default</code></pre>
 </section>
 <section id="optional-parameters" class="slide level2">
 <h2>Optional parameters</h2>
 <p>Optional parameters mean that the function has been written with default values for some of its parameters. If the user do not specify them, the default value will be used.</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" data-line-number="1">my_first_r_function &lt;-<span class="st"> </span><span class="cf">function</span>(x, y , <span class="dt">z =</span> <span class="dv">2</span>) </a>
-<a class="sourceLine" id="cb82-2" data-line-number="2">{</a>
-<a class="sourceLine" id="cb82-3" data-line-number="3">  result &lt;-<span class="st"> </span>x <span class="op">+</span><span class="st"> </span>y <span class="op">+</span><span class="st"> </span>z</a>
-<a class="sourceLine" id="cb82-4" data-line-number="4">  <span class="kw">return</span>(result)</a>
-<a class="sourceLine" id="cb82-5" data-line-number="5">}</a></code></pre></div>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" data-line-number="1"><span class="kw">my_first_r_function</span>(<span class="dv">1</span>, <span class="dv">2</span>) <span class="co"># Same as x = 1, y = 2, z = 2</span></a></code></pre></div>
-<pre><code>## [1] 5</code></pre>
-</section>
-<section class="slide level2">
-
 <div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" data-line-number="1">my_first_r_function &lt;-<span class="st"> </span><span class="cf">function</span>(x, y , <span class="dt">z =</span> <span class="dv">2</span>) </a>
 <a class="sourceLine" id="cb85-2" data-line-number="2">{</a>
 <a class="sourceLine" id="cb85-3" data-line-number="3">  result &lt;-<span class="st"> </span>x <span class="op">+</span><span class="st"> </span>y <span class="op">+</span><span class="st"> </span>z</a>
 <a class="sourceLine" id="cb85-4" data-line-number="4">  <span class="kw">return</span>(result)</a>
 <a class="sourceLine" id="cb85-5" data-line-number="5">}</a></code></pre></div>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" data-line-number="1"><span class="kw">my_first_r_function</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>) <span class="co"># Same as x = 1, y = 2, z = 1</span></a></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" data-line-number="1"><span class="kw">my_first_r_function</span>(<span class="dv">1</span>, <span class="dv">2</span>) <span class="co"># Same as x = 1, y = 2, z = 2</span></a></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+</section>
+<section class="slide level2">
+
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" data-line-number="1">my_first_r_function &lt;-<span class="st"> </span><span class="cf">function</span>(x, y , <span class="dt">z =</span> <span class="dv">2</span>) </a>
+<a class="sourceLine" id="cb88-2" data-line-number="2">{</a>
+<a class="sourceLine" id="cb88-3" data-line-number="3">  result &lt;-<span class="st"> </span>x <span class="op">+</span><span class="st"> </span>y <span class="op">+</span><span class="st"> </span>z</a>
+<a class="sourceLine" id="cb88-4" data-line-number="4">  <span class="kw">return</span>(result)</a>
+<a class="sourceLine" id="cb88-5" data-line-number="5">}</a></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" data-line-number="1"><span class="kw">my_first_r_function</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>) <span class="co"># Same as x = 1, y = 2, z = 1</span></a></code></pre></div>
 <pre><code>## [1] 4</code></pre>
 </section>
 <section id="control-flow" class="slide level2">
@@ -2352,33 +2375,33 @@ A_{m,n} =
 <section id="if-then-else" class="slide level2">
 <h2>if-then-else</h2>
 <p>An <strong>if condition</strong> offers the possibility to execute a code section if a certain condition is <code>TRUE</code>.</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" data-line-number="1"><span class="cf">if</span> (<span class="ot">TRUE</span>) {</a>
-<a class="sourceLine" id="cb88-2" data-line-number="2">  <span class="st">&quot;This will be executed.&quot;</span></a>
-<a class="sourceLine" id="cb88-3" data-line-number="3">}</a></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" data-line-number="1"><span class="cf">if</span> (<span class="ot">TRUE</span>) {</a>
+<a class="sourceLine" id="cb91-2" data-line-number="2">  <span class="st">&quot;This will be executed.&quot;</span></a>
+<a class="sourceLine" id="cb91-3" data-line-number="3">}</a></code></pre></div>
 <p>It is also possible to add an <code>else</code> clause to specify what to do if the condition is not met.</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" data-line-number="1"><span class="cf">if</span> (<span class="ot">TRUE</span>) {</a>
-<a class="sourceLine" id="cb89-2" data-line-number="2">  <span class="st">&quot;This will be executed.&quot;</span></a>
-<a class="sourceLine" id="cb89-3" data-line-number="3">} <span class="cf">else</span> {</a>
-<a class="sourceLine" id="cb89-4" data-line-number="4">  <span class="st">&quot;Otherwise, this will be executed.&quot;</span></a>
-<a class="sourceLine" id="cb89-5" data-line-number="5">}</a></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" data-line-number="1"><span class="cf">if</span> (<span class="ot">TRUE</span>) {</a>
+<a class="sourceLine" id="cb92-2" data-line-number="2">  <span class="st">&quot;This will be executed.&quot;</span></a>
+<a class="sourceLine" id="cb92-3" data-line-number="3">} <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb92-4" data-line-number="4">  <span class="st">&quot;Otherwise, this will be executed.&quot;</span></a>
+<a class="sourceLine" id="cb92-5" data-line-number="5">}</a></code></pre></div>
 </section>
 <section id="examples-1" class="slide level2">
 <h2>Examples</h2>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" data-line-number="1"><span class="cf">if</span> (<span class="dv">1</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>) {</a>
-<a class="sourceLine" id="cb90-2" data-line-number="2">  <span class="kw">print</span>(<span class="st">&quot;A&quot;</span>)</a>
-<a class="sourceLine" id="cb90-3" data-line-number="3">} <span class="cf">else</span> {</a>
-<a class="sourceLine" id="cb90-4" data-line-number="4">  <span class="kw">print</span>(<span class="st">&quot;B&quot;</span>)</a>
-<a class="sourceLine" id="cb90-5" data-line-number="5">}</a></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" data-line-number="1"><span class="cf">if</span> (<span class="dv">1</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>) {</a>
+<a class="sourceLine" id="cb93-2" data-line-number="2">  <span class="kw">print</span>(<span class="st">&quot;A&quot;</span>)</a>
+<a class="sourceLine" id="cb93-3" data-line-number="3">} <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb93-4" data-line-number="4">  <span class="kw">print</span>(<span class="st">&quot;B&quot;</span>)</a>
+<a class="sourceLine" id="cb93-5" data-line-number="5">}</a></code></pre></div>
 <pre><code>## [1] &quot;A&quot;</code></pre>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" data-line-number="1"><span class="cf">if</span> (<span class="st">&quot;abc&quot;</span> <span class="op">==</span><span class="st"> &quot;ABC&quot;</span>) {</a>
-<a class="sourceLine" id="cb92-2" data-line-number="2">  <span class="kw">print</span>(<span class="st">&quot;abc is equal to ABC&quot;</span>)</a>
-<a class="sourceLine" id="cb92-3" data-line-number="3">}</a></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" data-line-number="1"><span class="cf">if</span> (<span class="st">&quot;abc&quot;</span> <span class="op">==</span><span class="st"> &quot;ABC&quot;</span>) {</a>
+<a class="sourceLine" id="cb95-2" data-line-number="2">  <span class="kw">print</span>(<span class="st">&quot;abc is equal to ABC&quot;</span>)</a>
+<a class="sourceLine" id="cb95-3" data-line-number="3">}</a></code></pre></div>
 </section>
 <section id="ifelse" class="slide level2">
 <h2>ifelse</h2>
 <p>For simple conditions, it can be convenient to use the <code>ifelse()</code> function.</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" data-line-number="1"><span class="co"># Test if pi is &lt; than 3. If yes, return &quot;A&quot;, if no return &quot;B&quot;</span></a>
-<a class="sourceLine" id="cb93-2" data-line-number="2"><span class="kw">ifelse</span>(<span class="dt">test =</span> pi <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>, <span class="dt">yes =</span> <span class="st">&quot;A&quot;</span>, <span class="dt">no =</span> <span class="st">&quot;B&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" data-line-number="1"><span class="co"># Test if pi is &lt; than 3. If yes, return &quot;A&quot;, if no return &quot;B&quot;</span></a>
+<a class="sourceLine" id="cb96-2" data-line-number="2"><span class="kw">ifelse</span>(<span class="dt">test =</span> pi <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>, <span class="dt">yes =</span> <span class="st">&quot;A&quot;</span>, <span class="dt">no =</span> <span class="st">&quot;B&quot;</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;B&quot;</code></pre>
 </section>
 <section id="quick-rstudio-tip-1" class="slide level2">
@@ -2391,14 +2414,14 @@ A_{m,n} =
 <h2>More complex control</h2>
 <h4 id="question-1-5">Question #1:</h4>
 <p>What will be the value of <code>b</code> after this code is executed?</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" data-line-number="1">a &lt;-<span class="st"> </span><span class="ot">TRUE</span></a>
-<a class="sourceLine" id="cb95-2" data-line-number="2">b &lt;-<span class="st"> </span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb95-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb95-4" data-line-number="4"><span class="cf">if</span> (a <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span> <span class="op">&amp;</span><span class="st"> </span>b <span class="op">!=</span><span class="st"> </span><span class="dv">9</span>) {</a>
-<a class="sourceLine" id="cb95-5" data-line-number="5">  b &lt;-<span class="st"> </span>b <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb95-6" data-line-number="6">} <span class="cf">else</span> {</a>
-<a class="sourceLine" id="cb95-7" data-line-number="7">  b &lt;-<span class="st"> </span>b <span class="op">-</span><span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb95-8" data-line-number="8">}</a></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" data-line-number="1">a &lt;-<span class="st"> </span><span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb98-2" data-line-number="2">b &lt;-<span class="st"> </span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb98-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb98-4" data-line-number="4"><span class="cf">if</span> (a <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span> <span class="op">&amp;</span><span class="st"> </span>b <span class="op">!=</span><span class="st"> </span><span class="dv">9</span>) {</a>
+<a class="sourceLine" id="cb98-5" data-line-number="5">  b &lt;-<span class="st"> </span>b <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb98-6" data-line-number="6">} <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb98-7" data-line-number="7">  b &lt;-<span class="st"> </span>b <span class="op">-</span><span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb98-8" data-line-number="8">}</a></code></pre></div>
 </section>
 <section id="loops" class="slide level2">
 <h2>Loops</h2>
@@ -2410,18 +2433,18 @@ A_{m,n} =
 <section id="for-loops" class="slide level2">
 <h2>For loops</h2>
 <p>For loops are usually used when <strong>we know in advance</strong> how many loops we need to do. This type of loop depends on a counter that determines when the looping should stop. For loops are defined as follows:</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" data-line-number="1"><span class="cf">for</span> (counter <span class="cf">in</span> vector) {</a>
-<a class="sourceLine" id="cb96-2" data-line-number="2">  <span class="co"># Stuff to do here</span></a>
-<a class="sourceLine" id="cb96-3" data-line-number="3">}</a></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" data-line-number="1"><span class="cf">for</span> (counter <span class="cf">in</span> vector) {</a>
+<a class="sourceLine" id="cb99-2" data-line-number="2">  <span class="co"># Stuff to do here</span></a>
+<a class="sourceLine" id="cb99-3" data-line-number="3">}</a></code></pre></div>
 <p>At each iteration, the variable counter will take a new value based on all elements contained in vector.</p>
 </section>
 <section id="example" class="slide level2">
 <h2>Example</h2>
 <p>For example, the following <strong>for loop</strong> will be executed five times.</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" data-line-number="1"><span class="co"># Loop through all elements of a numeric vector</span></a>
-<a class="sourceLine" id="cb97-2" data-line-number="2"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>) {</a>
-<a class="sourceLine" id="cb97-3" data-line-number="3">  <span class="kw">print</span>(i)</a>
-<a class="sourceLine" id="cb97-4" data-line-number="4">}</a></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" data-line-number="1"><span class="co"># Loop through all elements of a numeric vector</span></a>
+<a class="sourceLine" id="cb100-2" data-line-number="2"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>) {</a>
+<a class="sourceLine" id="cb100-3" data-line-number="3">  <span class="kw">print</span>(i)</a>
+<a class="sourceLine" id="cb100-4" data-line-number="4">}</a></code></pre></div>
 <pre><code>## [1] 1
 ## [1] 2
 ## [1] 3
@@ -2430,10 +2453,10 @@ A_{m,n} =
 </section>
 <section id="example-1" class="slide level2">
 <h2>Example</h2>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" data-line-number="1"><span class="co"># Loop through all elements of a character vector</span></a>
-<a class="sourceLine" id="cb99-2" data-line-number="2"><span class="cf">for</span>(i <span class="cf">in</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;b&quot;</span>)) {</a>
-<a class="sourceLine" id="cb99-3" data-line-number="3">  <span class="kw">print</span>(i)</a>
-<a class="sourceLine" id="cb99-4" data-line-number="4">}</a></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" data-line-number="1"><span class="co"># Loop through all elements of a character vector</span></a>
+<a class="sourceLine" id="cb102-2" data-line-number="2"><span class="cf">for</span>(i <span class="cf">in</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;b&quot;</span>)) {</a>
+<a class="sourceLine" id="cb102-3" data-line-number="3">  <span class="kw">print</span>(i)</a>
+<a class="sourceLine" id="cb102-4" data-line-number="4">}</a></code></pre></div>
 <pre><code>## [1] &quot;a&quot;
 ## [1] &quot;c&quot;
 ## [1] &quot;b&quot;</code></pre>
@@ -2444,12 +2467,12 @@ A_{m,n} =
 <p>To rapidly create a <strong>for loop</strong>, start typing “for” and press tab and select snippet.</p>
 </blockquote>
 </section>
-<section id="exercise-6" class="slide level2 exercises">
+<section id="exercise-8" class="slide level2 exercises">
 <h2>Exercise</h2>
 <h4 id="exercise-1-1">Exercise #1</h4>
 <p>First, use the following code to create a numeric vector with 100 random numbers.</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">1234</span>)</a>
-<a class="sourceLine" id="cb101-2" data-line-number="2">vec &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">1234</span>)</a>
+<a class="sourceLine" id="cb104-2" data-line-number="2">vec &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>)</a></code></pre></div>
 <p>Create a loop that will calculate the average of all elements in the vector <code>vec</code>. The answer should be: -0.1567617.</p>
 </section>
 <section id="while-loop" class="slide level2">
@@ -2459,14 +2482,14 @@ A_{m,n} =
 <section id="example-2" class="slide level2">
 <h2>Example</h2>
 <p>In this example, the loop is executed as long as <span class="math inline">\(x \geq 2\)</span>.</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb102-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb102-3" data-line-number="3"><span class="cf">while</span> (x <span class="op">&gt;=</span><span class="st"> </span><span class="dv">2</span>) {</a>
-<a class="sourceLine" id="cb102-4" data-line-number="4">  </a>
-<a class="sourceLine" id="cb102-5" data-line-number="5">  <span class="kw">print</span>(x)    <span class="co"># Print the value of x</span></a>
-<a class="sourceLine" id="cb102-6" data-line-number="6">  </a>
-<a class="sourceLine" id="cb102-7" data-line-number="7">  x &lt;-<span class="st"> </span>x <span class="op">-</span><span class="st"> </span><span class="dv">2</span>  <span class="co"># Decrease the value of x by 2</span></a>
-<a class="sourceLine" id="cb102-8" data-line-number="8">}</a></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb105-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb105-3" data-line-number="3"><span class="cf">while</span> (x <span class="op">&gt;=</span><span class="st"> </span><span class="dv">2</span>) {</a>
+<a class="sourceLine" id="cb105-4" data-line-number="4">  </a>
+<a class="sourceLine" id="cb105-5" data-line-number="5">  <span class="kw">print</span>(x)    <span class="co"># Print the value of x</span></a>
+<a class="sourceLine" id="cb105-6" data-line-number="6">  </a>
+<a class="sourceLine" id="cb105-7" data-line-number="7">  x &lt;-<span class="st"> </span>x <span class="op">-</span><span class="st"> </span><span class="dv">2</span>  <span class="co"># Decrease the value of x by 2</span></a>
+<a class="sourceLine" id="cb105-8" data-line-number="8">}</a></code></pre></div>
 <pre><code>## [1] 10
 ## [1] 8
 ## [1] 6
@@ -2479,15 +2502,15 @@ A_{m,n} =
 <p>To rapidly create a <strong>while loop</strong>, start typing “while” and press tab and select snippet.</p>
 </blockquote>
 </section>
-<section id="exercise-7" class="slide level2 exercises">
+<section id="exercise-9" class="slide level2 exercises">
 <h2>Exercise</h2>
 <h4 id="exercise-1-2">Exercise #1</h4>
 <p>Create a <strong>while loop</strong> that will divide a given number (ex: <span class="math inline">\(x = 12344\)</span>) by 3 until the result is not smaller than 0.001.</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="dv">12334</span></a>
-<a class="sourceLine" id="cb104-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb104-3" data-line-number="3"><span class="cf">while</span>(...){</a>
-<a class="sourceLine" id="cb104-4" data-line-number="4">  <span class="co"># Your code here</span></a>
-<a class="sourceLine" id="cb104-5" data-line-number="5">}</a></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="dv">12334</span></a>
+<a class="sourceLine" id="cb107-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb107-3" data-line-number="3"><span class="cf">while</span>(...){</a>
+<a class="sourceLine" id="cb107-4" data-line-number="4">  <span class="co"># Your code here</span></a>
+<a class="sourceLine" id="cb107-5" data-line-number="5">}</a></code></pre></div>
 <h4 id="exercise-2-1">Exercise #2</h4>
 <p>How many loop were done?</p>
 </section>
@@ -2516,17 +2539,17 @@ A_{m,n} =
 <h2>R packages</h2>
 <p>We first need to <strong>install</strong> and <strong>load</strong> libraries before we can use them.</p>
 <h4 id="installation">Installation</h4>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" data-line-number="1"><span class="co"># Install the package names &quot;vegan&quot;. Only need to do it once.</span></a>
-<a class="sourceLine" id="cb105-2" data-line-number="2"><span class="kw">install.packages</span>(<span class="st">&quot;vegan&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" data-line-number="1"><span class="co"># Install the package names &quot;vegan&quot;. Only need to do it once.</span></a>
+<a class="sourceLine" id="cb108-2" data-line-number="2"><span class="kw">install.packages</span>(<span class="st">&quot;vegan&quot;</span>)</a></code></pre></div>
 <h4 id="loading">Loading</h4>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" data-line-number="1"><span class="co"># Load the library into memory. Has to be done every time you open R.</span></a>
-<a class="sourceLine" id="cb106-2" data-line-number="2"><span class="kw">library</span>(<span class="st">&quot;vegan&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" data-line-number="1"><span class="co"># Load the library into memory. Has to be done every time you open R.</span></a>
+<a class="sourceLine" id="cb109-2" data-line-number="2"><span class="kw">library</span>(<span class="st">&quot;vegan&quot;</span>)</a></code></pre></div>
 </section>
 <section id="r-packages-1" class="slide level2">
 <h2>R packages</h2>
 <h4 id="updating">Updating</h4>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" data-line-number="1"><span class="co"># Update all installed packages. Should do it on a regular basis.</span></a>
-<a class="sourceLine" id="cb107-2" data-line-number="2"><span class="kw">update.packages</span>(<span class="dt">ask =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" data-line-number="1"><span class="co"># Update all installed packages. Should do it on a regular basis.</span></a>
+<a class="sourceLine" id="cb110-2" data-line-number="2"><span class="kw">update.packages</span>(<span class="dt">ask =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 </section>
 <section id="packages-2" class="slide level2">
 <h2>Packages</h2>
@@ -2541,8 +2564,8 @@ A_{m,n} =
 <blockquote>
 <p>Documentation is one of the most important aspects of a good package.</p>
 </blockquote>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" data-line-number="1"><span class="kw">browseVignettes</span>() <span class="co"># List available vignettes in an HTML browser</span></a></code></pre></div>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" data-line-number="1"><span class="kw">help</span>(sum) <span class="co"># Open the help file for the sum() function</span></a></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" data-line-number="1"><span class="kw">browseVignettes</span>() <span class="co"># List available vignettes in an HTML browser</span></a></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" data-line-number="1"><span class="kw">help</span>(sum) <span class="co"># Open the help file for the sum() function</span></a></code></pre></div>
 </section>
 <section id="style-guide" class="slide level2">
 <h2>Style guide</h2>
@@ -2558,45 +2581,45 @@ A_{m,n} =
 <section id="naming-convention" class="slide level2">
 <h2>Naming convention</h2>
 <h4 id="object-names">Object names</h4>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" data-line-number="1"><span class="co"># Good</span></a>
-<a class="sourceLine" id="cb110-2" data-line-number="2">day_one</a>
-<a class="sourceLine" id="cb110-3" data-line-number="3">day_<span class="dv">1</span></a>
-<a class="sourceLine" id="cb110-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb110-5" data-line-number="5"><span class="co"># Bad</span></a>
-<a class="sourceLine" id="cb110-6" data-line-number="6">first_day_of_the_month</a>
-<a class="sourceLine" id="cb110-7" data-line-number="7">DayOne</a>
-<a class="sourceLine" id="cb110-8" data-line-number="8">dayone</a>
-<a class="sourceLine" id="cb110-9" data-line-number="9">djm1</a></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" data-line-number="1"><span class="co"># Good</span></a>
+<a class="sourceLine" id="cb113-2" data-line-number="2">day_one</a>
+<a class="sourceLine" id="cb113-3" data-line-number="3">day_<span class="dv">1</span></a>
+<a class="sourceLine" id="cb113-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb113-5" data-line-number="5"><span class="co"># Bad</span></a>
+<a class="sourceLine" id="cb113-6" data-line-number="6">first_day_of_the_month</a>
+<a class="sourceLine" id="cb113-7" data-line-number="7">DayOne</a>
+<a class="sourceLine" id="cb113-8" data-line-number="8">dayone</a>
+<a class="sourceLine" id="cb113-9" data-line-number="9">djm1</a></code></pre></div>
 </section>
 <section class="slide level2">
 
 <h4 id="spacing">Spacing</h4>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" data-line-number="1"><span class="co"># Good</span></a>
-<a class="sourceLine" id="cb111-2" data-line-number="2">average &lt;-<span class="st"> </span><span class="kw">mean</span>(feet <span class="op">/</span><span class="st"> </span><span class="dv">12</span> <span class="op">+</span><span class="st"> </span>inches, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb111-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb111-4" data-line-number="4"><span class="co"># Bad</span></a>
-<a class="sourceLine" id="cb111-5" data-line-number="5">average&lt;-<span class="kw">mean</span>(feet<span class="op">/</span><span class="dv">12</span><span class="op">+</span>inches,<span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" data-line-number="1"><span class="co"># Good</span></a>
-<a class="sourceLine" id="cb112-2" data-line-number="2"><span class="cf">if</span> (debug) <span class="kw">do</span>(x)</a>
-<a class="sourceLine" id="cb112-3" data-line-number="3">diamonds[<span class="dv">5</span>, ]</a>
-<a class="sourceLine" id="cb112-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb112-5" data-line-number="5"><span class="co"># Bad</span></a>
-<a class="sourceLine" id="cb112-6" data-line-number="6"><span class="cf">if</span> ( debug ) <span class="kw">do</span>(x)  <span class="co"># No spaces around debug</span></a>
-<a class="sourceLine" id="cb112-7" data-line-number="7">x[<span class="dv">1</span>,]   <span class="co"># Needs a space after the comma</span></a>
-<a class="sourceLine" id="cb112-8" data-line-number="8">x[<span class="dv">1</span> ,]  <span class="co"># Space goes after comma not before</span></a></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" data-line-number="1"><span class="co"># Good</span></a>
+<a class="sourceLine" id="cb114-2" data-line-number="2">average &lt;-<span class="st"> </span><span class="kw">mean</span>(feet <span class="op">/</span><span class="st"> </span><span class="dv">12</span> <span class="op">+</span><span class="st"> </span>inches, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb114-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb114-4" data-line-number="4"><span class="co"># Bad</span></a>
+<a class="sourceLine" id="cb114-5" data-line-number="5">average&lt;-<span class="kw">mean</span>(feet<span class="op">/</span><span class="dv">12</span><span class="op">+</span>inches,<span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" data-line-number="1"><span class="co"># Good</span></a>
+<a class="sourceLine" id="cb115-2" data-line-number="2"><span class="cf">if</span> (debug) <span class="kw">do</span>(x)</a>
+<a class="sourceLine" id="cb115-3" data-line-number="3">diamonds[<span class="dv">5</span>, ]</a>
+<a class="sourceLine" id="cb115-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb115-5" data-line-number="5"><span class="co"># Bad</span></a>
+<a class="sourceLine" id="cb115-6" data-line-number="6"><span class="cf">if</span> ( debug ) <span class="kw">do</span>(x)  <span class="co"># No spaces around debug</span></a>
+<a class="sourceLine" id="cb115-7" data-line-number="7">x[<span class="dv">1</span>,]   <span class="co"># Needs a space after the comma</span></a>
+<a class="sourceLine" id="cb115-8" data-line-number="8">x[<span class="dv">1</span> ,]  <span class="co"># Space goes after comma not before</span></a></code></pre></div>
 </section>
 <section class="slide level2">
 
 <h4 id="line-wrapping">Line wrapping</h4>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" data-line-number="1"><span class="co"># Bad</span></a>
-<a class="sourceLine" id="cb113-2" data-line-number="2"><span class="kw">list</span>(<span class="dt">total =</span> a <span class="op">+</span><span class="st"> </span>b <span class="op">+</span><span class="st"> </span>c, <span class="dt">mean =</span> (a <span class="op">+</span><span class="st"> </span>b <span class="op">+</span><span class="st"> </span>c) <span class="op">/</span><span class="st"> </span>n, <span class="dt">min =</span> <span class="kw">min</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)))</a>
-<a class="sourceLine" id="cb113-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb113-4" data-line-number="4"><span class="co"># Good</span></a>
-<a class="sourceLine" id="cb113-5" data-line-number="5"><span class="kw">list</span>(</a>
-<a class="sourceLine" id="cb113-6" data-line-number="6">  <span class="dt">total =</span> a <span class="op">+</span><span class="st"> </span>b <span class="op">+</span><span class="st"> </span>c,</a>
-<a class="sourceLine" id="cb113-7" data-line-number="7">  <span class="dt">mean =</span> (a <span class="op">+</span><span class="st"> </span>b <span class="op">+</span><span class="st"> </span>c) <span class="op">/</span><span class="st"> </span>n,</a>
-<a class="sourceLine" id="cb113-8" data-line-number="8">  <span class="dt">min =</span> <span class="kw">min</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</a>
-<a class="sourceLine" id="cb113-9" data-line-number="9">)</a></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" data-line-number="1"><span class="co"># Bad</span></a>
+<a class="sourceLine" id="cb116-2" data-line-number="2"><span class="kw">list</span>(<span class="dt">total =</span> a <span class="op">+</span><span class="st"> </span>b <span class="op">+</span><span class="st"> </span>c, <span class="dt">mean =</span> (a <span class="op">+</span><span class="st"> </span>b <span class="op">+</span><span class="st"> </span>c) <span class="op">/</span><span class="st"> </span>n, <span class="dt">min =</span> <span class="kw">min</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)))</a>
+<a class="sourceLine" id="cb116-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb116-4" data-line-number="4"><span class="co"># Good</span></a>
+<a class="sourceLine" id="cb116-5" data-line-number="5"><span class="kw">list</span>(</a>
+<a class="sourceLine" id="cb116-6" data-line-number="6">  <span class="dt">total =</span> a <span class="op">+</span><span class="st"> </span>b <span class="op">+</span><span class="st"> </span>c,</a>
+<a class="sourceLine" id="cb116-7" data-line-number="7">  <span class="dt">mean =</span> (a <span class="op">+</span><span class="st"> </span>b <span class="op">+</span><span class="st"> </span>c) <span class="op">/</span><span class="st"> </span>n,</a>
+<a class="sourceLine" id="cb116-8" data-line-number="8">  <span class="dt">min =</span> <span class="kw">min</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</a>
+<a class="sourceLine" id="cb116-9" data-line-number="9">)</a></code></pre></div>
 </section>
 <section class="slide level2">
 
@@ -2616,17 +2639,17 @@ stuff.r</code></pre>
 <h2></h2>
 <h4 id="exercise-1-3">Exercise #1</h4>
 <p>Create the following vector and find a way to extract odd numbers. Hint: use the <code>seq()</code> function.</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" data-line-number="1">v &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">15</span>)</a>
-<a class="sourceLine" id="cb115-2" data-line-number="2">v</a></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" data-line-number="1">v &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">15</span>)</a>
+<a class="sourceLine" id="cb118-2" data-line-number="2">v</a></code></pre></div>
 <pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15</code></pre>
 </section>
 <section id="section-1" class="slide level2 exercises">
 <h2></h2>
 <h4 id="exercise-2-2">Exercise #2</h4>
 <p>Create a matrix A using the following command. Then, write a command to find how many values are smaller than 0. Hints: use the <code>sum()</code> and <code>which()</code> functions.</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">1234</span>)</a>
-<a class="sourceLine" id="cb117-2" data-line-number="2">A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">data =</span> <span class="kw">rnorm</span>(<span class="dv">25</span>), <span class="dt">ncol =</span> <span class="dv">5</span>, <span class="dt">nrow =</span> <span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb117-3" data-line-number="3">A</a></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">1234</span>)</a>
+<a class="sourceLine" id="cb120-2" data-line-number="2">A &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">data =</span> <span class="kw">rnorm</span>(<span class="dv">25</span>), <span class="dt">ncol =</span> <span class="dv">5</span>, <span class="dt">nrow =</span> <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb120-3" data-line-number="3">A</a></code></pre></div>
 <pre><code>##            [,1]       [,2]        [,3]       [,4]       [,5]
 ## [1,] -1.2070657  0.5060559 -0.47719270 -0.1102855  0.1340882
 ## [2,]  0.2774292 -0.5747400 -0.99838644 -0.5110095 -0.4906859
@@ -2638,20 +2661,20 @@ stuff.r</code></pre>
 <h2></h2>
 <h4 id="exercise-3-1">Exercise #3</h4>
 <p>Create the <code>subtraction()</code> function using the following code:</p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" data-line-number="1">subtraction &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">y =</span> <span class="dv">3</span>) {</a>
-<a class="sourceLine" id="cb119-2" data-line-number="2">  <span class="kw">return</span>(x <span class="op">-</span><span class="st"> </span>y)</a>
-<a class="sourceLine" id="cb119-3" data-line-number="3">}</a></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" data-line-number="1">subtraction &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">y =</span> <span class="dv">3</span>) {</a>
+<a class="sourceLine" id="cb122-2" data-line-number="2">  <span class="kw">return</span>(x <span class="op">-</span><span class="st"> </span>y)</a>
+<a class="sourceLine" id="cb122-3" data-line-number="3">}</a></code></pre></div>
 <p>What will be the outputs of these commands?</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" data-line-number="1"><span class="kw">subtraction</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb120-2" data-line-number="2"><span class="kw">subtraction</span>(<span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb120-3" data-line-number="3"><span class="kw">subtraction</span>(<span class="dt">y =</span> <span class="dv">-1</span>, <span class="dt">x =</span> <span class="dv">10</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" data-line-number="1"><span class="kw">subtraction</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb123-2" data-line-number="2"><span class="kw">subtraction</span>(<span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb123-3" data-line-number="3"><span class="kw">subtraction</span>(<span class="dt">y =</span> <span class="dv">-1</span>, <span class="dt">x =</span> <span class="dv">10</span>)</a></code></pre></div>
 </section>
 <section id="section-3" class="slide level2 exercises">
 <h2></h2>
 <h4 id="exercise-4-1">Exercise #4</h4>
 <p>Create a vector of integers using the following code:</p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">1234</span>)</a>
-<a class="sourceLine" id="cb121-2" data-line-number="2">x &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">1234</span>)</a>
+<a class="sourceLine" id="cb124-2" data-line-number="2">x &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <p>How many even numbers (0, 2, 4, …) are there in the vector?</p>
 <p>Hint: Type <code>?Arithmetic</code> and read about <strong>mod</strong>.</p>
 <p>You can also find hints here: <a href="https://en.wikipedia.org/wiki/Modulo_operation" class="uri">https://en.wikipedia.org/wiki/Modulo_operation</a></p>

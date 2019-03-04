@@ -2,22 +2,22 @@
 title: "Numerical ecology"
 output:
   revealjs::revealjs_presentation:
-    incremental: true
+    center: yes
+    css: styles.css
+    fig_caption: no
+    fig_height: 4
+    fig_width: 5
+    highlight: zenburn
+    incremental: yes
+    self_contained: yes
     theme: moon
     transition: convex
-    highlight: zenburn
-    center: true
-    self_contained: true
-    fig_width: 5
-    fig_height: 4
-    fig_caption: false
-    css: styles.css
   pdf_document:
     fig_caption: yes
+  html_document:
+    df_print: paged
+  word_document: default
 ---
-
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
 <center>
 <img src="myfigs/myname.png" alt="drawing" width="500"/>
@@ -25,11 +25,10 @@ output:
 
 Research assistant at Takuvik (Laval University, Québec, Canada)
 
-> - Remote sensing, modeling, data science
+> - Remote sensing
+> - Modeling & statistics
+> - Data sciences
 
-<i class="fab fa-github"></i> https://github.com/PMassicotte <br>
-<i class="far fa-envelope"></i> philippe.massicotte@takuvik.ulaval.ca <br>
-<i class="fab fa-twitter"></i> @philmassicotte
 
 ## Data science
 
@@ -78,7 +77,7 @@ Research assistant at Takuvik (Laval University, Québec, Canada)
 
 ## Why programing?
 
-You might wonder why it is important to learn how to program in environmental sciences. There are *at least* two good reasons:
+You might wonder **why it is important to learn programming in science**. There are *at least* two good reasons:
 
 1. Reproducibility (ability to recreate what you did).
 
@@ -143,8 +142,6 @@ The best way to learn programming and statistics is by practicing. After each co
 **I strongly recommend to install RStudio as your integrated developing environment (IDE).**
 
 *Download RStudio* https://www.rstudio.com/products/RStudio/
-
-*Class notes* https://goo.gl/44bSRd
 
 ## First steps with RStudio
 

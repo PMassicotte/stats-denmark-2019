@@ -376,8 +376,7 @@ We use the function `anova.cca()` to perform the permutation test. **Do not get 
 anova.cca(rda, permutations = 999)
 ```
 
-> Argument `permutations` gives the minimal number of permutations requested
-to assess if the F value of a test is obviously significant or not [@Borcard2011].
+> Argument `permutations` gives the minimal number of permutations requested to assess if the F value of a test is obviously significant or not [@Borcard2011].
 
 ## Permutation test
 
@@ -541,9 +540,9 @@ my_rda$CA$eig[my_rda$CA$eig > mean(my_rda$CA$eig)]
 
 #### Exercise #1
 
-Explore the data for your class report using RDA. 
+Explore our data for your using an RDA. 
 
-If you have not found data yet (!) use the following data and create an RDA to predict vascular plant abundance with chemical variables.
+If you do not have data, use the following data and create an RDA to predict vascular plant abundance with chemical variables.
 
 ```{r}
 #bryo <- read.delim("http://goo.gl/UugH8X", row.names = 1)
@@ -569,6 +568,8 @@ anova(my_rda2)
 
 anova(my_rda2, by = "axis")
 anova(my_rda2, by = "terms")
+
+plot(my_rda2, type = "text", scaling = 3)
 
 ```
 
@@ -633,10 +634,6 @@ Caution: the values are unadjusted and are therefore biased.
 ```{r}
 RsquareAdj(partial_rda) # Always report adjusted R2
 ```
-
-## Test of significance
-
-> Tests of significance of the individual canonical axes in redundancy analysis allow researchers to determine which of the axes represent variation that can be distinguished from random [@Legendre2011].
 
 ## Test of significance
 

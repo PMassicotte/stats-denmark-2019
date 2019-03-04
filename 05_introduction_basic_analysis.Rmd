@@ -28,8 +28,7 @@ knitr::opts_chunk$set(
   fig.height = 4,
   fig.align = "center"
 )
-library(ggplot2)
-library(dplyr)
+library(tidyverse)
 
 library(extrafont)
 loadfonts(quiet = TRUE)
@@ -135,6 +134,24 @@ shapiro.test(InsectSprays2$count_norm[InsectSprays2$spray == "F"])
 
 The second assumption we need to verify is that the variance of the two groups are homogeneous.
 
+```{r, echo=FALSE, fig.width=7}
+set.seed(1)
+n <- 5000
+
+invoke_map(list(rnorm, rnorm), list(list(n = n, sd = 3), list(n = n, sd = 1))) %>% 
+  enframe("simulation") %>% 
+  unnest() %>% 
+  ggplot(aes(x = value, fill = factor(simulation))) +
+  geom_histogram(alpha = 0.5, color = NA, bins = 100) +
+  scale_fill_discrete(breaks = c("1", "2"), labels = c("SD = 3", "SD = 1")) +
+  theme(legend.title = element_blank())
+
+```
+
+## Homogeneous variances
+
+It can be tested using the `var.test()` function.
+
 ```{r}
 var.test(count_norm ~ spray, data = InsectSprays2)
 ```
@@ -161,11 +178,9 @@ We then report the results of the t-test as follows:
 
 There was a significant difference in the number of insects between spray C (mean = `r round(mod$estimate[1], digits = 2)`) and spray F (mean = `r round(mod$estimate[2], digits = 2)`)[t(`r mod$parameter`) = `r round(mod$statistic, digits = 2)`, p = `r round(mod$p.value, digits = 4)`].
 
-- Can you spot the problem?
-
 ## t-test
 
-You can (and should) exponentiate the results you get from the log-transformation. Doing so will provide the geometric mean and not the artimetic mean.
+You can (and should) exponentiate the results you get from the log-transformation. Doing so will provide the geometric mean and not the arithmetic mean.
 
 There was a significant difference in the number of insects between spray C (mean = `r round(10^mod$estimate[1], digits = 2)`) and spray F (mean = `r round(10^mod$estimate[2], digits = 2)`)[t(`r mod$parameter`) = `r round(mod$statistic, digits = 2)`, p = `r round(mod$p.value, digits = 4)`].
 
@@ -246,15 +261,6 @@ ggplot(mpg, aes(x = factor(cyl), y = cty)) +
   geom_boxplot()
 ```
 
-## A concrete example
-
-Using `dplyr` it is easy to calculate the median value as well.
-
-```{r}
-group_by(mpg, cyl) %>% 
-  summarise(median_mpg = median(cty))
-```
-
 ## ANOVA
 
 A one-way anova is performed using the `aov()` (analysis of variance) function.
@@ -301,6 +307,10 @@ Here is how you should report the result of your ANOVA in your paper.
 
 > There was a significant (not a significant) effect of the number of cylinders on city miles per gallon at the $p < 0.05$ level $[F(3, 230) = 146.41, p < 0.0001]$.
 
+## Non-parametric test
+
+If your data is not normal and can not be transformed, you should use a non-parametric test (i.e. based on the ranks) such as the Kruskal-Wallis test (`kruskal.test()`).
+
 ## Tukey post-hoc test
 
 - From the `summary()` function we rejected the null hypothesis.
@@ -308,10 +318,6 @@ Here is how you should report the result of your ANOVA in your paper.
 - We know that not all means are equal but we do not know which one(s).
 
 - To determine which groups are different from each other we need to use a **post hoc test** such as the **Tukey Honest Significant Differences**.
-
-## Non-parametric test
-
-If your data is not normal and can not be transformed, you should use a non-parametric test (i.e. based on the ranks) such as the Kruskal-Wallis test (`kruskal.test()`).
 
 ## TukeyHSD
 
@@ -421,7 +427,7 @@ Where to draw the **least square line**?
 ## Graphical view of a LM
 
 ```{r, echo = FALSE}
-df2 <- tidyr::gather(df, y, value, -x) %>% filter(y != "y")
+df2 <- tidyr::gather(df, y, value, -x) %>% dplyr::filter(y != "y")
 p + geom_line(data = df2, aes(x = x, y = value, group = y, color = y)) +
   theme(legend.position = "none")
 
@@ -594,7 +600,7 @@ Hence the equation is: **$y = `r round(coef(lm1)[1], digit = 4)` + `r round(coef
 ## Example
 
 ```{r, echo = FALSE}
-df <- select(df, x, y)
+df <- dplyr::select(df, x, y)
 df
 ```
 
@@ -681,7 +687,7 @@ mean(residuals(mod))
 
 #### Exercise #1
 
-Use the `mpg` data and make a model to predict `cty` using the variable `hwy` (*do not forget to look at the data before starting making your model*).
+Use the `mpg` data and make a model to predict `cty` using the variable `hwy` (*do not forget to look at the data before making your model*).
 
 <small>
 ```{r, echo = FALSE, results="asis"}

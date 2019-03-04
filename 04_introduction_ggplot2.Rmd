@@ -1,5 +1,5 @@
 ---
-title: "Efficient data visualisation with ggplot2"
+title: "Data visualisation with ggplot2"
 bibliography: /home/pmassicotte/Documents/library.bib
 output:
   revealjs::revealjs_presentation:
@@ -500,7 +500,7 @@ Saving your pretty ggplot2 graphics is pretty easy with the `ggsave()` function.
 
 ```{r, eval = FALSE}
 p <- ggplot(mpg, aes(x = displ, y = cty)) +
-geom_point()
+  geom_point()
 
 # Vector formats
 ggsave("path/to/myfile.pdf", p, width = 5.97, height = 4.79)
@@ -547,5 +547,5 @@ ggplot(temp, aes(x = year, y = temperature)) +
   ylab("Temperature (degree)") +
   xlab("Years") +
   labs(color = "Place") +
-  geom_vline(xintercept = 2016, lty = 2, size = 0.25)
+  geom_vline(xintercept = 2019, lty = 2, size = 0.25)
 ```

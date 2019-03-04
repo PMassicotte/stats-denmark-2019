@@ -72,7 +72,7 @@ knitr::knit_hooks$set(
 ## Introduction to GLM
 <!-- http://qcbs.ca/wiki/r -->
 
-Until now, we have worked with statistical analysis (anova, lm) **that supposed a normal distribution** of our response variable(s).
+Until now, we have worked with statistical analysis (anova, lm) **that supposed a normal distribution** of the response variable.
 
 ```{r, echo = FALSE}
 set.seed(1)
@@ -308,7 +308,7 @@ pdf_poisson <- function(y, u){
 
 The mean number of successes (**$\mu$**) is the number of successes obtained during a period of time.
 
-For example, your Ph. D. advisor writes you, on average, 2 emails per day (**$\mu = 2$**). What is the probability of *finally* having a day without any emails from him/her (**$P(Y_0; 2)$**)?
+For example, your Ph. D. advisor writes you, on average, 2 emails per day (**$\mu = 2$**) . What is the probability of *finally* having a day without any emails from him/her (**$P(Y_0; 2)$**)?
 
 ```{r, class = "fragment"}
 pdf_poisson(y = 0, u = 2)

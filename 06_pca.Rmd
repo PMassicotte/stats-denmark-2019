@@ -529,14 +529,6 @@ Look at the angle between `qsec` and `wt` (~90 degrees).
 languageR::pairscor.fnc(mtcars[, 1:7])
 ```
 
-## Interpreting a PCA
-
-<small>
-```{r, echo = FALSE, results="asis"}
-print(xtable::xtable(head(mtcars, 15)[, 1:7]), type = "html", NA.string = "NA")
-```
-</small>
-
 ## Your turn!
 
 Using your data (or a subset of your data) and perform a PCA. What does this tell you about your data?

@@ -33,7 +33,7 @@ However, most of the time we want to work with external data.
 
 ## Data frames
 
-Data frames are important objects in R which are created when reading a file.
+**Data frames** are important objects in R which are created when reading a file.
 
 Can be seen as an Excel tabular sheet:
 
@@ -56,38 +56,6 @@ After you opened a data file, it is always a good idea to look the structure of 
 ```{r}
 str(mtcars) # str stands for structure
 ```
-
-## CSV and Excel files
-
-I recommend to use `readr` and `readxl` libraries for reading CSV and Excel files. These two libraries are not installed by default.
-
-<center>
-<img src="https://readr.tidyverse.org/logo.png" width="150"/> <img src="https://readxl.tidyverse.org/logo.png" width="150"/> 
-</center>
-
-```{r, eval = FALSE}
-install.packages("readr") # Package to read csv files
-install.packages("readxl") # Package to read Excel files
-```
-
-----
-
-### Reading Excel files
-
-```{r, eval = FALSE}
-library(readxl) # Load the readxl package
-mydata <- read_excel("/path/to/myfile.xls")
-mydata <- read_excel("/path/to/myfile.xlsx", sheet = 3)
-```
-
-### Reading csv files
-
-```{r, eval = FALSE}
-library(readr) # Load the readr package
-mydata <- read_csv("/path/to/myfile.csv") # Read some data
-```
-
-Use `read_csv2()` if you are using CSV files produced with EU settings (`;` instead of `,` separator).
 
 ## Useful functions
 
@@ -149,6 +117,38 @@ mtcars$cyl[1:10] # first 10 values of the vector names "cyl"
 
 > After typing the name of a data frame, the list of all variables within this data frame will appears. Use the keyboard to select the variable of interest. 
 
+## CSV and Excel files
+
+I recommend to use `readr` and `readxl` libraries for reading CSV and Excel files. These two libraries are not installed by default.
+
+<center>
+<img src="https://readr.tidyverse.org/logo.png" width="150"/> <img src="https://readxl.tidyverse.org/logo.png" width="150"/> 
+</center>
+
+```{r, eval = FALSE}
+install.packages("readr") # Package to read csv files
+install.packages("readxl") # Package to read Excel files
+```
+
+----
+
+Reading Excel files
+
+```{r, eval = FALSE}
+library(readxl) # Load the readxl package
+mydata <- read_excel("/path/to/myfile.xls")
+mydata <- read_excel("/path/to/myfile.xlsx", sheet = 3)
+```
+
+Reading csv files
+
+```{r, eval = FALSE}
+library(readr) # Load the readr package
+mydata <- read_csv("/path/to/myfile.csv") # Read some data
+```
+
+Use `read_csv2()` if you are using CSV files produced with EU settings (`;` instead of `,` separator).
+
 ## Other file formats
 
 There are many file format supported by R. This is a list of functions to use to open most used file format.
@@ -169,8 +169,6 @@ There are many file format supported by R. This is a list of functions to use to
 #### Exercise #1
 
 Open and explore your data in R and start exploring them. 
-
-If you already have you data for the class report it might be a good idea to see if you can import them into R.
 
 > - Data types as expected?
 > - How missing values (`NA`) have been handled by R?
@@ -559,19 +557,9 @@ How many packages have been downloaded that day from people in Denmark?
 
 - Joins are used to "merge" data frame together.
 
-## Graphical view
+## Joins in R
 
-<center>
-
-<figure>
-
-<img style="margin:0px auto;display:block" src="myfigs/dplyr_joins.png" width = "550"/>
-
-<figcaption>Source: http://blog.rstudio.org/2015/01/09/dplyr-0-4-0/</figcaption>
-</figure>
-
-</center>
-
+There are many ways of joining tables (data frames) in R. We will however focus on the merging tools offered by the package `dplyr`.
 
 ## Types of join
 
@@ -585,10 +573,6 @@ How many packages have been downloaded that day from people in Denmark?
 </figure>
 
 </center>
-
-## Joins in R
-
-There are many ways of joining tables (data frames) in R. We will however focus on the merging tools offered by the package `dplyr`.
 
 ## Examples
 
@@ -782,7 +766,7 @@ http://www.who.int/tb/country/data/download/en/
 
 ## The messy data
 
-Take a minute to look at the following table to find what is the main problems.
+Take a minute to look at the following table to find what are the main problems.
 
 <small>
 ```{r, echo = FALSE, results="asis"}

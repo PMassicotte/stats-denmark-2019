@@ -174,6 +174,15 @@ What is the value of:
 x[6]
 ```
 
+## Exercise {.exercises}
+
+Given the vector `x`:
+
+
+```r
+x <- c(1, 4, -1, 10, 5.4)
+```
+
 #### Question #2
 
 What is the value of:
@@ -235,6 +244,8 @@ y <- c(3, 1)        # vector 2
 
 x + y
 ```
+
+## Exercise {.exercises}
 
 #### Question #2
 
@@ -625,13 +636,31 @@ my_first_r_function <- function(x, y, z)
   # Return the value of result
   return(result)
 }
+```
 
+
+```r
 # x = 1, y = 2, z = 3
 my_first_r_function(1, 2, 3)
 ```
 
 ```
 ## [1] 6
+```
+
+
+## Your first R function
+
+
+```r
+my_first_r_function <- function(x, y, z) 
+{
+  # Do something here with arguments x, y, z
+  result <- x + y + z
+  
+  # Return the value of result
+  return(result)
+}
 ```
 
 

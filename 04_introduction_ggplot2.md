@@ -1,5 +1,5 @@
 ---
-title: "Efficient data visualisation with ggplot2"
+title: "Data visualisation with ggplot2"
 bibliography: /home/pmassicotte/Documents/library.bib
 output:
   revealjs::revealjs_presentation:
@@ -50,11 +50,11 @@ The data-to-ink ratio should be keep as high as possible.
 
 ## Examples
 
-<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-1-1..svg" style="display: block; margin: auto;" />
+<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-8-1..svg" style="display: block; margin: auto;" />
 
 ## Examples
 
-<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-2-1..svg" style="display: block; margin: auto;" />
+<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-9-1..svg" style="display: block; margin: auto;" />
 
 ## How to lie with graphs
 
@@ -62,7 +62,7 @@ It is easy to exaggerate effects or distort the reality with graphs.
 
 ## Examples
 
-<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-3-1..svg" style="display: block; margin: auto;" />
+<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-10-1..svg" style="display: block; margin: auto;" />
 
 ## Examples
 
@@ -111,7 +111,7 @@ The value of C is 3...
 
 ----
 
-<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-4-1..svg" style="display: block; margin: auto;" />
+<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-11-1..svg" style="display: block; margin: auto;" />
 
 ## Top 3 of bad graphs
 
@@ -166,7 +166,7 @@ For the following examples we are going to use the data from the `mpg` dataset. 
 
 <small>
 <!-- html table generated in R 3.5.2 by xtable 1.8-2 package -->
-<!-- Fri Feb 15 11:40:48 2019 -->
+<!-- Sat Mar  2 14:20:15 2019 -->
 <table border=1>
 <tr> <th>  </th> <th> manufacturer </th> <th> model </th> <th> displ </th> <th> year </th> <th> cyl </th> <th> trans </th> <th> drv </th> <th> cty </th> <th> hwy </th> <th> fl </th> <th> class </th>  </tr>
   <tr> <td align="right"> 1 </td> <td> audi </td> <td> a4 </td> <td align="right"> 1.80 </td> <td align="right"> 1999 </td> <td align="right">   4 </td> <td> auto(l5) </td> <td> f </td> <td align="right">  18 </td> <td align="right">  29 </td> <td> p </td> <td> compact </td> </tr>
@@ -230,7 +230,7 @@ p <- ggplot(data = mpg, mapping = aes(x = cty))
 p + geom_histogram()
 ```
 
-<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-8-1..svg" style="display: block; margin: auto;" />
+<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-15-1..svg" style="display: block; margin: auto;" />
 
 ## Histogram
 
@@ -240,7 +240,7 @@ p + geom_histogram()
 p + geom_histogram(binwidth = 5)
 ```
 
-<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-9-1..svg" style="display: block; margin: auto;" />
+<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-16-1..svg" style="display: block; margin: auto;" />
 
 ## Exercise {.exercises}
 
@@ -263,7 +263,7 @@ ggplot(data = mpg, mapping = aes(x = class)) +
   geom_bar()
 ```
 
-<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-11-1..svg" style="display: block; margin: auto;" />
+<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-18-1..svg" style="display: block; margin: auto;" />
 
 ## Two variables graphics
 
@@ -286,7 +286,7 @@ p <- ggplot(mpg, aes(x = displ, y = hwy))
 p + geom_point()
 ```
 
-<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-12-1..svg" style="display: block; margin: auto;" />
+<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-19-1..svg" style="display: block; margin: auto;" />
 
 ## Line plot
 
@@ -299,7 +299,7 @@ p <- ggplot(mpg, aes(x = displ, y = hwy))
 p + geom_line()
 ```
 
-<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-13-1..svg" style="display: block; margin: auto;" />
+<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-20-1..svg" style="display: block; margin: auto;" />
 
 ## Exercise {.exercises}
 
@@ -321,7 +321,7 @@ ggplot(data = mpg, mapping = aes(x = class, y = cty)) +
   geom_boxplot() # boxplot geom with no parameters
 ```
 
-<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-14-1..svg" style="display: block; margin: auto;" />
+<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-21-1..svg" style="display: block; margin: auto;" />
 
 ## Exercise {.exercises}
 
@@ -335,7 +335,7 @@ ggplot(data = mpg, mapping = aes(x = cyl, y = hwy)) +
   geom_boxplot() # boxplot geom with no parameters
 ```
 
-<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-15-1..svg" style="display: block; margin: auto;" />
+<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-22-1..svg" style="display: block; margin: auto;" />
 
 ## Working with colors
 
@@ -347,7 +347,7 @@ ggplot(mpg, aes(x = displ, y = hwy)) +
   geom_point(color = "red")
 ```
 
-<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-16-1..svg" style="display: block; margin: auto;" />
+<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-23-1..svg" style="display: block; margin: auto;" />
 
 ## Working with colors
 
@@ -360,7 +360,7 @@ ggplot(mpg, aes(x = displ, y = hwy)) +
   geom_point(aes(color = class))
 ```
 
-<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-17-1..svg" style="display: block; margin: auto;" />
+<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-24-1..svg" style="display: block; margin: auto;" />
 
 ## Working with size
 
@@ -372,7 +372,7 @@ ggplot(mpg, aes(x = displ, y = hwy)) +
   geom_point(aes(size = factor(cyl)))
 ```
 
-<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-18-1..svg" style="display: block; margin: auto;" />
+<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-25-1..svg" style="display: block; margin: auto;" />
 
 ## Exercise {.exercises}
 
@@ -380,7 +380,7 @@ ggplot(mpg, aes(x = displ, y = hwy)) +
 
 Try to reproduce this graphic.
 
-<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-19-1..svg" style="display: block; margin: auto;" />
+<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-26-1..svg" style="display: block; margin: auto;" />
 
 What is wrong with this graphic?
 
@@ -401,7 +401,7 @@ ggplot(mpg, aes(x = displ, y = cty)) + # Mapping
   facet_wrap(~class) # We want 1 panel for each class
 ```
 
-<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-20-1..svg" style="display: block; margin: auto;" />
+<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-27-1..svg" style="display: block; margin: auto;" />
 
 ## 1D facets
 
@@ -412,7 +412,7 @@ ggplot(mpg, aes(x = displ, y = cty)) + # Mapping
   facet_wrap(~class, scale = "free") # We want 1 panel for each class
 ```
 
-<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-21-1..svg" style="display: block; margin: auto;" />
+<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-28-1..svg" style="display: block; margin: auto;" />
 
 ## 2D facets
 
@@ -434,7 +434,7 @@ ggplot(mpg, aes(x = displ, y = hwy)) +
   facet_grid(cyl ~ class) # number of cyl as a function of class
 ```
 
-<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-23-1..svg" style="display: block; margin: auto;" />
+<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-30-1..svg" style="display: block; margin: auto;" />
 
 ## Graphics appearance
 
@@ -471,7 +471,7 @@ ggplot(mpg, aes(x = displ, y = cty)) +
 
 ----
 
-<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-25-1..svg" style="display: block; margin: auto;" />
+<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-32-1..svg" style="display: block; margin: auto;" />
 
 ## Saving your graphic
 
@@ -480,7 +480,7 @@ Saving your pretty ggplot2 graphics is pretty easy with the `ggsave()` function.
 
 ```r
 p <- ggplot(mpg, aes(x = displ, y = cty)) +
-geom_point()
+  geom_point()
 
 # Vector formats
 ggsave("path/to/myfile.pdf", p, width = 5.97, height = 4.79)
@@ -515,4 +515,4 @@ Data source: http://climrun.cyi.ac.cy/?q=csv
 
 ----
 
-<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-28-1..svg" style="display: block; margin: auto;" />
+<img src="04_introduction_ggplot2_files/figure-revealjs/unnamed-chunk-35-1..svg" style="display: block; margin: auto;" />

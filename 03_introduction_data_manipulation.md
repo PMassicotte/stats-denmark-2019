@@ -28,7 +28,7 @@ However, most of the time we want to work with external data.
 
 ## Data frames
 
-Data frames are important objects in R which are created when reading a file.
+**Data frames** are important objects in R which are created when reading a file.
 
 Can be seen as an Excel tabular sheet:
 
@@ -78,41 +78,6 @@ str(mtcars) # str stands for structure
 ##  $ gear: num  4 4 4 3 3 3 3 4 4 4 ...
 ##  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...
 ```
-
-## CSV and Excel files
-
-I recommend to use `readr` and `readxl` libraries for reading CSV and Excel files. These two libraries are not installed by default.
-
-<center>
-<img src="https://readr.tidyverse.org/logo.png" width="150"/> <img src="https://readxl.tidyverse.org/logo.png" width="150"/> 
-</center>
-
-
-```r
-install.packages("readr") # Package to read csv files
-install.packages("readxl") # Package to read Excel files
-```
-
-----
-
-### Reading Excel files
-
-
-```r
-library(readxl) # Load the readxl package
-mydata <- read_excel("/path/to/myfile.xls")
-mydata <- read_excel("/path/to/myfile.xlsx", sheet = 3)
-```
-
-### Reading csv files
-
-
-```r
-library(readr) # Load the readr package
-mydata <- read_csv("/path/to/myfile.csv") # Read some data
-```
-
-Use `read_csv2()` if you are using CSV files produced with EU settings (`;` instead of `,` separator).
 
 ## Useful functions
 
@@ -219,6 +184,41 @@ mtcars$cyl[1:10] # first 10 values of the vector names "cyl"
 
 > After typing the name of a data frame, the list of all variables within this data frame will appears. Use the keyboard to select the variable of interest. 
 
+## CSV and Excel files
+
+I recommend to use `readr` and `readxl` libraries for reading CSV and Excel files. These two libraries are not installed by default.
+
+<center>
+<img src="https://readr.tidyverse.org/logo.png" width="150"/> <img src="https://readxl.tidyverse.org/logo.png" width="150"/> 
+</center>
+
+
+```r
+install.packages("readr") # Package to read csv files
+install.packages("readxl") # Package to read Excel files
+```
+
+----
+
+Reading Excel files
+
+
+```r
+library(readxl) # Load the readxl package
+mydata <- read_excel("/path/to/myfile.xls")
+mydata <- read_excel("/path/to/myfile.xlsx", sheet = 3)
+```
+
+Reading csv files
+
+
+```r
+library(readr) # Load the readr package
+mydata <- read_csv("/path/to/myfile.csv") # Read some data
+```
+
+Use `read_csv2()` if you are using CSV files produced with EU settings (`;` instead of `,` separator).
+
 ## Other file formats
 
 There are many file format supported by R. This is a list of functions to use to open most used file format.
@@ -239,8 +239,6 @@ There are many file format supported by R. This is a list of functions to use to
 #### Exercise #1
 
 Open and explore your data in R and start exploring them. 
-
-If you already have you data for the class report it might be a good idea to see if you can import them into R.
 
 > - Data types as expected?
 > - How missing values (`NA`) have been handled by R?
@@ -990,19 +988,9 @@ How many packages have been downloaded that day from people in Denmark?
 
 - Joins are used to "merge" data frame together.
 
-## Graphical view
+## Joins in R
 
-<center>
-
-<figure>
-
-<img style="margin:0px auto;display:block" src="myfigs/dplyr_joins.png" width = "550"/>
-
-<figcaption>Source: http://blog.rstudio.org/2015/01/09/dplyr-0-4-0/</figcaption>
-</figure>
-
-</center>
-
+There are many ways of joining tables (data frames) in R. We will however focus on the merging tools offered by the package `dplyr`.
 
 ## Types of join
 
@@ -1016,10 +1004,6 @@ How many packages have been downloaded that day from people in Denmark?
 </figure>
 
 </center>
-
-## Joins in R
-
-There are many ways of joining tables (data frames) in R. We will however focus on the merging tools offered by the package `dplyr`.
 
 ## Examples
 
@@ -1315,7 +1299,7 @@ Take a minute to look at the following table to find what is the main problems.
 
 <small>
 <!-- html table generated in R 3.5.2 by xtable 1.8-2 package -->
-<!-- Fri Feb 15 11:00:18 2019 -->
+<!-- Sat Mar  2 14:05:03 2019 -->
 <table border=1>
 <tr> <th>  </th> <th> religion </th> <th> &lt;$10k </th> <th> $10-20k </th> <th> $20-30k </th> <th> $30-40k </th> <th> $40-50k </th> <th> $50-75k </th> <th> $75-100k </th> <th> $100-150k </th> <th> &gt;150k </th> <th> Don't know/refused </th>  </tr>
   <tr> <td align="right"> 1 </td> <td> Agnostic </td> <td align="right"> 27.00 </td> <td align="right"> 34.00 </td> <td align="right"> 60.00 </td> <td align="right"> 81.00 </td> <td align="right"> 76.00 </td> <td align="right"> 137.00 </td> <td align="right"> 122.00 </td> <td align="right"> 109.00 </td> <td align="right"> 84.00 </td> <td align="right"> 96.00 </td> </tr>
@@ -1347,7 +1331,7 @@ fixed <- gather(messy, income, frequency, -religion)
 
 <small>
 <!-- html table generated in R 3.5.2 by xtable 1.8-2 package -->
-<!-- Fri Feb 15 11:00:18 2019 -->
+<!-- Sat Mar  2 14:05:03 2019 -->
 <table border=1>
 <tr> <th>  </th> <th> religion </th> <th> income </th> <th> frequency </th>  </tr>
   <tr> <td align="right"> 1 </td> <td> Agnostic </td> <td> &lt;$10k </td> <td align="right"> 27.00 </td> </tr>
@@ -1387,11 +1371,11 @@ http://www.who.int/tb/country/data/download/en/
 
 ## The messy data
 
-Take a minute to look at the following table to find what is the main problems.
+Take a minute to look at the following table to find what are the main problems.
 
 <small>
 <!-- html table generated in R 3.5.2 by xtable 1.8-2 package -->
-<!-- Fri Feb 15 11:00:19 2019 -->
+<!-- Sat Mar  2 14:05:04 2019 -->
 <table border=1>
 <tr> <th>  </th> <th> iso2 </th> <th> year </th> <th> new_sp_m04 </th> <th> new_sp_m514 </th> <th> new_sp_m014 </th> <th> new_sp_m1524 </th> <th> new_sp_m2534 </th> <th> new_sp_m3544 </th>  </tr>
   <tr> <td align="right"> 1 </td> <td> AD </td> <td align="right"> 1989.00 </td> <td align="right"> NA </td> <td align="right"> NA </td> <td align="right"> NA </td> <td align="right"> NA </td> <td align="right"> NA </td> <td align="right"> NA </td> </tr>
@@ -1429,7 +1413,7 @@ fixed <- gather(messy, demographic, frequency, -iso2, -year)
 
 <small>
 <!-- html table generated in R 3.5.2 by xtable 1.8-2 package -->
-<!-- Fri Feb 15 11:00:19 2019 -->
+<!-- Sat Mar  2 14:05:04 2019 -->
 <table border=1>
 <tr> <th>  </th> <th> iso2 </th> <th> year </th> <th> demographic </th> <th> frequency </th>  </tr>
   <tr> <td align="right"> 1 </td> <td> AD </td> <td align="right"> 1989.00 </td> <td> new_sp_m04 </td> <td align="right"> NA </td> </tr>
@@ -1475,7 +1459,7 @@ fixed <- separate(data = fixed, # Which data frame we separate
 
 <small>
 <!-- html table generated in R 3.5.2 by xtable 1.8-2 package -->
-<!-- Fri Feb 15 11:00:19 2019 -->
+<!-- Sat Mar  2 14:05:04 2019 -->
 <table border=1>
 <tr> <th>  </th> <th> iso2 </th> <th> year </th> <th> junk </th> <th> sex </th> <th> age_group </th> <th> frequency </th>  </tr>
   <tr> <td align="right"> 1 </td> <td> AD </td> <td align="right"> 1989.00 </td> <td> new_sp_ </td> <td> m </td> <td> 04 </td> <td align="right"> NA </td> </tr>
@@ -1512,7 +1496,7 @@ messy <- read_csv("https://goo.gl/eUUJ6n")
 
 <small>
 <!-- html table generated in R 3.5.2 by xtable 1.8-2 package -->
-<!-- Fri Feb 15 11:00:20 2019 -->
+<!-- Sat Mar  2 14:05:05 2019 -->
 <table border=1>
 <tr> <th>  </th> <th> id </th> <th> year </th> <th> month </th> <th> element </th> <th> d1 </th> <th> d2 </th> <th> d3 </th> <th> d4 </th> <th> d5 </th> <th> d6 </th> <th> d7 </th> <th> d8 </th> <th> d9 </th> <th> d10 </th>  </tr>
   <tr> <td align="right"> 1 </td> <td> MX17004 </td> <td align="right"> 2010.00 </td> <td align="right"> 1.00 </td> <td> tmax </td> <td align="right"> NA </td> <td align="right"> NA </td> <td align="right"> NA </td> <td align="right"> NA </td> <td align="right"> NA </td> <td align="right"> NA </td> <td align="right"> NA </td> <td align="right"> NA </td> <td> NA </td> <td align="right"> NA </td> </tr>
@@ -1543,7 +1527,7 @@ It feels better already.
 
 <small>
 <!-- html table generated in R 3.5.2 by xtable 1.8-2 package -->
-<!-- Fri Feb 15 11:00:20 2019 -->
+<!-- Sat Mar  2 14:05:05 2019 -->
 <table border=1>
 <tr> <th>  </th> <th> id </th> <th> year </th> <th> month </th> <th> element </th> <th> day </th> <th> temperature </th>  </tr>
   <tr> <td align="right"> 1 </td> <td> MX17004 </td> <td align="right"> 2010.00 </td> <td align="right"> 12.00 </td> <td> tmax </td> <td> d1 </td> <td align="right"> 29.90 </td> </tr>
@@ -1593,7 +1577,7 @@ fixed <- mutate(fixed, day = parse_number(day))
 
 <small>
 <!-- html table generated in R 3.5.2 by xtable 1.8-2 package -->
-<!-- Fri Feb 15 11:00:20 2019 -->
+<!-- Sat Mar  2 14:05:05 2019 -->
 <table border=1>
 <tr> <th>  </th> <th> id </th> <th> year </th> <th> month </th> <th> element </th> <th> day </th> <th> temperature </th>  </tr>
   <tr> <td align="right"> 1 </td> <td> MX17004 </td> <td align="right"> 2010.00 </td> <td align="right"> 12.00 </td> <td> tmax </td> <td align="right"> 1.00 </td> <td align="right"> 29.90 </td> </tr>
@@ -1619,7 +1603,7 @@ Looking at the table we see that there is something strange with `element`. Can 
 
 <small>
 <!-- html table generated in R 3.5.2 by xtable 1.8-2 package -->
-<!-- Fri Feb 15 11:00:20 2019 -->
+<!-- Sat Mar  2 14:05:05 2019 -->
 <table border=1>
 <tr> <th>  </th> <th> id </th> <th> year </th> <th> month </th> <th> element </th> <th> day </th> <th> temperature </th>  </tr>
   <tr> <td align="right"> 1 </td> <td> MX17004 </td> <td align="right"> 2010.00 </td> <td align="right"> 12.00 </td> <td> tmax </td> <td align="right"> 1.00 </td> <td align="right"> 29.90 </td> </tr>
@@ -1650,7 +1634,7 @@ fixed <- spread(fixed, element, temperature)
 
 <small>
 <!-- html table generated in R 3.5.2 by xtable 1.8-2 package -->
-<!-- Fri Feb 15 11:00:20 2019 -->
+<!-- Sat Mar  2 14:05:05 2019 -->
 <table border=1>
 <tr> <th>  </th> <th> id </th> <th> year </th> <th> month </th> <th> day </th> <th> tmax </th> <th> tmin </th>  </tr>
   <tr> <td align="right"> 1 </td> <td> MX17004 </td> <td align="right"> 2010.00 </td> <td align="right"> 1.00 </td> <td align="right"> 30.00 </td> <td align="right"> 27.80 </td> <td align="right"> 14.50 </td> </tr>

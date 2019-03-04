@@ -291,7 +291,7 @@ Based on this model, `tree_diversity` explains `r round(vegan::RsquareAdj(mod_nu
 
 ## Method 1: Include the geographical positions
 
-Create the model with the lat/lon interaction.
+Create the model with the lat/lon **interaction**.
 
 ```{r}
 mod_lon_lat <- lm(bird_diversity ~ tree_diversity + lon_x * lat_y, data = df)
@@ -365,7 +365,7 @@ plot(semivario, smooth = TRUE)
 ```
 
 <figure>
-  <img src="http://plantecology.syr.edu/fridley/bio793/R_march29_notes_files/image001.jpg" height="300">
+  <img src="http://plantecology.syr.edu/fridley/bio793/R_march29_notes_files/image001.jpg" height="250">
 </figure>
 
 ## Method 2: provide a spatial correlation structure
