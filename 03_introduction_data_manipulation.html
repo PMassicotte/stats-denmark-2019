@@ -2054,7 +2054,7 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <section id="exercise" class="slide level2 exercises">
 <h2>Exercise</h2>
 <h4 id="exercise-1">Exercise #1</h4>
-<p>Open and explore your data in R and start exploring them.</p>
+<p>Open your data in R and start exploring them.</p>
 <ul>
 <li>Data types as expected?</li>
 <li>How missing values (<code>NA</code>) have been handled by R?</li>
@@ -2893,7 +2893,7 @@ Source: <a href="http://bit.ly/1QZ8Oil" class="uri">http://bit.ly/1QZ8Oil</a>
 <section id="the-messy-data-1" class="slide level2">
 <h2>The messy data</h2>
 <p>Take a minute to look at the following table to find what is the main problems.</p>
-<small> <!-- html table generated in R 3.5.2 by xtable 1.8-2 package --> <!-- Mon Mar  4 16:02:05 2019 -->
+<small> <!-- html table generated in R 3.5.2 by xtable 1.8-2 package --> <!-- Tue Mar  5 08:16:45 2019 -->
 <table border="1">
 <tr>
 <th>
@@ -3174,7 +3174,7 @@ Evangelical Prot
 <h2>gather</h2>
 <div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" data-line-number="1"><span class="co"># Tidy the data frame (2 new columns and keep &quot;religion&quot; as is).</span></a>
 <a class="sourceLine" id="cb96-2" data-line-number="2">fixed &lt;-<span class="st"> </span><span class="kw">gather</span>(messy, income, frequency, <span class="op">-</span>religion)</a></code></pre></div>
-<small> <!-- html table generated in R 3.5.2 by xtable 1.8-2 package --> <!-- Mon Mar  4 16:02:06 2019 -->
+<small> <!-- html table generated in R 3.5.2 by xtable 1.8-2 package --> <!-- Tue Mar  5 08:16:46 2019 -->
 <table border="1">
 <tr>
 <th>
@@ -3347,7 +3347,7 @@ Jewish
 <section id="the-messy-data-3" class="slide level2">
 <h2>The messy data</h2>
 <p>Take a minute to look at the following table to find what are the main problems.</p>
-<small> <!-- html table generated in R 3.5.2 by xtable 1.8-2 package --> <!-- Mon Mar  4 16:02:06 2019 -->
+<small> <!-- html table generated in R 3.5.2 by xtable 1.8-2 package --> <!-- Tue Mar  5 08:16:46 2019 -->
 <table border="1">
 <tr>
 <th>
@@ -3741,7 +3741,7 @@ NA
 <h4 id="column-headers-are-values-not-variable-names-1">Column headers are values, not variable names</h4>
 <p>As for the previous dataset, we use the <code>gather()</code> function.</p>
 <div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" data-line-number="1">fixed &lt;-<span class="st"> </span><span class="kw">gather</span>(messy, demographic, frequency, <span class="op">-</span>iso2, <span class="op">-</span>year)</a></code></pre></div>
-<small> <!-- html table generated in R 3.5.2 by xtable 1.8-2 package --> <!-- Mon Mar  4 16:02:06 2019 -->
+<small> <!-- html table generated in R 3.5.2 by xtable 1.8-2 package --> <!-- Tue Mar  5 08:16:46 2019 -->
 <table border="1">
 <tr>
 <th>
@@ -3886,7 +3886,7 @@ NA
 </section>
 <section id="the-result" class="slide level2">
 <h2>The result</h2>
-<small> <!-- html table generated in R 3.5.2 by xtable 1.8-2 package --> <!-- Mon Mar  4 16:02:06 2019 -->
+<small> <!-- html table generated in R 3.5.2 by xtable 1.8-2 package --> <!-- Tue Mar  5 08:16:46 2019 -->
 <table border="1">
 <tr>
 <th>
@@ -4266,7 +4266,7 @@ NA
 <p>The following messy dataset is the daily weather data from the Global Historical Climatology Network for one weather station (MX17004) in Mexico for five months in 2010.</p>
 <p>Take a minute to look at the following table to find what are the main problems.</p>
 <div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" data-line-number="1">messy &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://goo.gl/eUUJ6n&quot;</span>)</a></code></pre></div>
-<small> <!-- html table generated in R 3.5.2 by xtable 1.8-2 package --> <!-- Mon Mar  4 16:02:07 2019 -->
+<small> <!-- html table generated in R 3.5.2 by xtable 1.8-2 package --> <!-- Tue Mar  5 08:16:47 2019 -->
 <table border="1">
 <tr>
 <th>
@@ -4610,7 +4610,7 @@ NA
 <section id="first-problem-resolved" class="slide level2">
 <h2>First problem resolved</h2>
 <p>It feels better already.</p>
-<small> <!-- html table generated in R 3.5.2 by xtable 1.8-2 package --> <!-- Mon Mar  4 16:02:07 2019 -->
+<small> <!-- html table generated in R 3.5.2 by xtable 1.8-2 package --> <!-- Tue Mar  5 08:16:47 2019 -->
 <table border="1">
 <tr>
 <th>
@@ -4931,7 +4931,7 @@ d4
 <h2>Problem #2</h2>
 <p>We can easily extract numerical values from character using the <code>parse_number()</code> function.</p>
 <div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" data-line-number="1">fixed &lt;-<span class="st"> </span><span class="kw">mutate</span>(fixed, <span class="dt">day =</span> <span class="kw">parse_number</span>(day))</a></code></pre></div>
-<small> <!-- html table generated in R 3.5.2 by xtable 1.8-2 package --> <!-- Mon Mar  4 16:02:07 2019 -->
+<small> <!-- html table generated in R 3.5.2 by xtable 1.8-2 package --> <!-- Tue Mar  5 08:16:47 2019 -->
 <table border="1">
 <tr>
 <th>
@@ -5238,7 +5238,7 @@ tmin
 <h2>Problem #3</h2>
 <h4 id="variables-are-stored-in-column">Variables are stored in column</h4>
 <p>Looking at the table we see that there is something strange with <code>element</code>. Can you guess it?</p>
-<small> <!-- html table generated in R 3.5.2 by xtable 1.8-2 package --> <!-- Mon Mar  4 16:02:07 2019 -->
+<small> <!-- html table generated in R 3.5.2 by xtable 1.8-2 package --> <!-- Tue Mar  5 08:16:47 2019 -->
 <table border="1">
 <tr>
 <th>
@@ -5546,7 +5546,7 @@ tmin
 <p><code>tmin</code> and <code>tmax</code> are variables, not values and we should make them columns instead.</p>
 <p>This is easily done using the <code>spread()</code> function.</p>
 <div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" data-line-number="1">fixed &lt;-<span class="st"> </span><span class="kw">spread</span>(fixed, element, temperature)</a></code></pre></div>
-<small> <!-- html table generated in R 3.5.2 by xtable 1.8-2 package --> <!-- Mon Mar  4 16:02:07 2019 -->
+<small> <!-- html table generated in R 3.5.2 by xtable 1.8-2 package --> <!-- Tue Mar  5 08:16:47 2019 -->
 <table border="1">
 <tr>
 <th>

@@ -168,7 +168,7 @@ There are many file format supported by R. This is a list of functions to use to
 
 #### Exercise #1
 
-Open and explore your data in R and start exploring them. 
+Open your data in R and start exploring them. 
 
 > - Data types as expected?
 > - How missing values (`NA`) have been handled by R?
