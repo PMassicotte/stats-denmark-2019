@@ -1,5 +1,8 @@
 theme: jekyll-theme-minimal
 
-title: [The title of your site]
-description: [A short description of your site's purpose]
+title: [Numerical ecology - Basic data handling and statistics using R]
+description: [Teaching material for the lecture week (Aarhus University, Campus Roskilde)]
 
+# Includes an icon in the footer for each username you enter
+footer-links:
+  twitter: philmassicotte
