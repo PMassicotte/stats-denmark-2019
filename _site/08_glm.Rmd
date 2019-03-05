@@ -1,0 +1,1184 @@
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE,
+  dev = "svg",
+  fig.width = 7,
+  fig.height = 5,
+  fig.align = "center",
+  tidy = TRUE,
+  tidy.opts = list(width.cutoff = 50)
+)
+
+library(ggplot2)
+library(dplyr)
+library(vegan)
+library(readr)
+library(extrafont)
+loadfonts(quiet = TRUE)
+
+theme_set(theme_bw(base_size = 16, base_family = "Open Sans"))
+#options(width = 10)
+```
+
+```{r cache=F,echo=F}
+s0 <- knitr::knit_hooks$get('source')
+o0 <- knitr::knit_hooks$get('output')
+
+knitr::knit_hooks$set(
+  list(
+    source =
+      function(x, options) {
+        if (is.null(options$class)) {
+          s0(x, options)
+        } else {
+          paste0(
+            paste0("<div class='", options$class, "'><pre><code>"),
+            x, "</code></pre>\n"
+          )
+        }
+      }, output = function(x, options) {
+      if (is.null(options$class)) {
+        o0(x, options)
+      } else {
+        paste0(
+          "<pre><code>",
+          x, "</code></pre></div>\n"
+        )
+      }
+    }
+  )
+)
+```
+
+## Introduction to GLM
+<!-- http://qcbs.ca/wiki/r -->
+
+Until now, we have worked with statistical analysis (anova, lm) **that supposed a normal distribution** of the response variable.
+
+```{r, echo = FALSE}
+set.seed(1)
+df <- tibble(x = 10 * rnorm(1000))
+ggplot(df, aes(x = x)) +
+  geom_histogram(aes(y = ..density..),
+    # breaks = seq(-50, 50, by = 10),
+    colour = "black",
+    fill = "white",
+    size = 0.25
+  ) +
+  stat_function(fun = dnorm, args = list(mean = mean(df$x), sd = sd(df$x)), colour = "red") +
+  scale_x_continuous(limits = c(-40, 40))
+```
+
+
+## Normal distribution
+
+Data: Daily maximum temperature in Roskilde between 2015-01-01 and 2015-12-18.
+
+Source: http://www.wunderground.com/history/
+
+```{r}
+temperature <- read_csv("data/temp_roskilde_2015.csv")
+temperature <- janitor::clean_names(temperature)
+temperature$cet <- as.Date(temperature$cet, format = "%Y-%m-%d")
+```
+
+## The data
+
+<small>
+```{r, echo = FALSE, results="asis"}
+print(xtable::xtable(head(temperature[, 1:7], 10)), 
+      type = "html", NA.string = "NA")
+```
+</small>
+
+----
+
+```{r}
+ggplot(temperature, aes(x = cet, y = mean_temperature_c)) +
+  geom_point() +
+  geom_smooth(method = "loess") +
+  scale_x_date()
+```
+
+## Normal distribution
+
+
+```{r, echo = FALSE, fig.height = 4}
+par(mfrow = c(1,2))
+
+hist(temperature$mean_temperature_c, xlab = "Temperature (C)", 
+     main = "Histogram of temperature")
+
+hist(temperature$mean_temperature_c, freq = FALSE, 
+     main = "Normal probability curve", 
+     xlab = "Temperature (C)")
+
+lines(density(temperature$mean_temperature_c, na.rm = TRUE), col = "red", lwd = 3)
+```
+
+In 2015, the probability of having a temperature of 15 degrees was ~ 4%.
+
+## Probability density function (PDF)
+
+The probability density function of a normal curve (or distribution) of observations **$y_i$** is defined as:
+
+$$
+f(y_i; \mu, \sigma) = \frac{1}{\sigma \sqrt{2\pi}}e^{-\frac{(y_i - \mu)^2}{2\sigma^2}}
+$$
+
+With **$\mu$** and **$\sigma^2$** being the **mean** and the **variance** of the population.
+
+## Calculating the probability of...
+
+Using the previous equation, we can easily calculate the probability of having a value **$y$** given a mean **$\mu$** and a standard deviation **$\sigma$**.
+
+```{r}
+# Function to calculate PDF
+pdf_normal <- function(x, sd, u){
+  
+  y <- (1 / (sd * sqrt(2 * pi))) * exp(-(((x - u)^2)/(2 * sd^2)))
+  
+  return(y)
+}
+
+```
+
+## PDF of temperature
+
+Lets calculate the probability of **$P(Y = y)$**.
+
+```{r}
+# Average
+u <- mean(temperature$mean_temperature_c, na.rm = TRUE) 
+
+# Standard deviation
+sd <- sd(temperature$mean_temperature_c, na.rm = TRUE)
+
+prob <- pdf_normal(x = temperature$mean_temperature_c, sd = sd, u = u)
+```
+
+## Theoretical vs observed PDF
+
+```{r, echo = FALSE}
+hist(temperature$mean_temperature_c, freq = FALSE, xlab = "Temperature (C)", main = "")
+
+i <- order(temperature$mean_temperature_c)
+lines(temperature$mean_temperature_c[i], prob[i], col = "orange", lwd = 2)
+lines(density(temperature$mean_temperature_c, na.rm = TRUE), col = "red", lwd = 3)
+legend("topright", c("Theoretical PDF", "Observed PDF"),
+  col = c("orange", "red"), lwd = 2, bty = "n"
+)
+```
+
+## Normal distribution
+
+Note that with the normal distribution: **$-\infty < y < \infty$**
+
+```{r, fig.width = 4.5, fig.height = 3.5, echo = -1}
+par(mar = c(4, 4, 1, 2))
+temp <- -100:100 # Vector of extreme temperatures
+y <- pdf_normal(temp, sd, u)
+plot(temp, y * 100,
+  type = "l", xlab = "Temperature (C)",
+  ylab = "Probability (%)", col = "red", lwd = 2
+)
+```
+
+----
+
+Precisely:
+
+**$P(Y = -100)$**
+
+```{r}
+pdf_normal(-100, sd, u) * 100
+```
+
+**$P(Y = 25)$**
+
+```{r}
+pdf_normal(25, sd, u) * 100
+```
+
+## Exercise {.exercises}
+
+#### Question #1
+
+Within the variable `qsec` from the `mtcars` data frame, calculate the theoretical probability of having a car doing 1/4 miles in 18 seconds **$P(Y = 18)$**.
+
+```{r, fig.width = 4.5, fig.height = 3.5, echo = FALSE}
+hist(mtcars$qsec, freq = FALSE)
+```
+
+## Answer
+
+```{r}
+sd <- sd(mtcars$qsec)
+u <- mean(mtcars$qsec)
+
+pdf_normal(18, sd, u)
+```
+
+**Tips:** In R, you can use the `dnorm()` function.
+
+```{r}
+dnorm(18, mean = u, sd = sd)
+```
+
+
+## Other distributions
+
+What to do if the response variable does not follow a Normal distribution?
+
+This is specially common in ecology or in environmental sciences.
+
+> - Count data (always positive): 1, 2, 3, 4
+> - Presence/absence data (0-1): 0, 1, 1, 1, 0, 0
+> - Proportional data (0-100%): 0.1, 14, 97.4, 100
+
+How can we model such data?
+
+1. Apply data transformation ($\sqrt{y}$, $log(y)$, ...).
+2. **Choose a different distribution better suited for our data.**
+
+## GLM
+
+GLM are **extensions** of linear modeling since a **non-Gaussian** distribution for the response variable is used [@Zuur2009].
+
+Before using GLM on non-Gaussian response variables, we need to understand few more types of distribution:
+
+- Poisson distribution
+- Negative binomial distribution
+- Gamma distribution
+- Binomial distribution
+
+## Poisson distribution
+
+## Poisson distribution
+
+The Poisson distribution is a type of distribution suited for **count data** which are common in ecology.
+
+## PDF of a Poisson distribution
+
+$$
+f(y; \mu) = \frac{\mu^y \times e^{-\mu}}{y!}
+$$
+
+with **$y \geq 0$**  (why?)
+
+Contrary to the Normal distribution, the PDF of the Poisson distribution has only one parameter **$\mu$** .
+
+**$\mu$** : Mean number of successes in the given time interval or region space.
+
+## Poisson PDF in R
+
+You have two minutes to write the Poisson PDF equation in R.
+
+```{r}
+# Poisson distribution function
+pdf_poisson <- function(y, u){
+
+  prob <- (u^y * exp(-u)) / factorial(y)
+  
+  return(prob)
+
+}
+```
+
+## Mean number of successes
+
+The mean number of successes (**$\mu$**) is the number of successes obtained during a period of time.
+
+For example, your Ph. D. advisor writes you, on average, 2 emails per day (**$\mu = 2$**) . What is the probability of *finally* having a day without any emails from him/her (**$P(Y_0; 2)$**)?
+
+```{r, class = "fragment"}
+pdf_poisson(y = 0, u = 2)
+```
+
+## More examples
+
+What is the probability of having him/her writing you less than 4 emails?
+
+**$P(Y_0; 2) + P(Y_1; 2) + P(Y_2; 2) + P(Y_3; 2)$** 
+
+```{r, tidy=FALSE}
+pdf_poisson(y = 0, u = 2) + pdf_poisson(y = 1, u = 2) +
+  pdf_poisson(y = 2, u = 2) + pdf_poisson(y = 3, u = 2)
+```
+
+> - **Tip:** In R, you can use the `dpois()` function.
+
+```{r, tidy=FALSE}
+dpois(0, 2) + dpois(1, 2) + dpois(2, 2) + dpois(3, 2)
+```
+
+## Graphical view
+
+```{r, echo = FALSE, fig.height=4, fig.width=6}
+x <- 0:10
+y <- dpois(x, 2) * 100
+plot(x, y, type = "l", xlab = "Number of email per day", 
+     ylab = "Probability (%)",xaxs="i",yaxs="i", ylim = c(0, 30))
+
+polygon(c(0, x[x <= 3], 3), c(0, y[x <= 3], 0), col = "cadetblue")
+legend("topright", c("P(Y <= 3)"), 
+       col = c("cadetblue"), pch = 22, pt.bg = c("cadetblue"), 
+       bty = "n")
+```
+
+Iimportant: the sum of all probabilities is equal to 1.
+
+**
+$$
+\sum\limits_{y=0}^{\infty} P(Y_y; \mu) = 1
+$$
+**
+
+## More examples
+
+What is the probability of having him/her writing you 4 or more emails?
+
+\begin{equation} \label{eq1}
+\begin{split}
+P(Y \geq 4)  & = P(Y = 4) + P(Y = 5) + ... \\
+\end{split}
+\end{equation}
+
+## More examples
+
+What is the probability of having him/her writing you 4 or more emails?
+
+\begin{equation} \label{eq2}
+\begin{split}
+P(Y \geq 4)  & = P(Y = 4) + P(Y = 5) + ... \\
+          & = 1 - P(Y = 0) + P(Y = 1) + P(Y = 2) + P(Y = 3) \\
+          & = 1 - \frac{2^0 \times e^{-2}}{0!} + \frac{2^1 \times e^{-9.5}}{1!} + \frac{2^2 \times e^{-2}}{2!} + \frac{2^3 \times e^{-2}}{3!} \\
+          
+          & = 1 - 0.135 - 0.271 - 0.271 - 0.180\\
+          
+          & = 0.143
+          
+\end{split}
+\end{equation}
+
+```{r, class = "fragment"}
+1 - dpois(0, 2) - dpois(1, 2) - dpois(2, 2) - dpois(3, 2)
+```
+
+## Graphical view
+
+```{r, echo = FALSE, fig.height=4, fig.width=6}
+x <- 0:10
+y <- dpois(x, 2) * 100
+
+plot(x, y,
+  type = "l", xlab = "Number of email per day",
+  ylab = "Probability (%)", xaxs = "i", yaxs = "i", ylim = c(0, 30)
+)
+
+polygon(c(x[x >= 4], 4), c(y[x >= 4], 0), col = "red")
+polygon(c(0, x[x <= 4], 4), c(0, y[x <= 4], 0), col = "cadetblue")
+legend("topright", c("P(Y < 4)", "P(Y >= 4)"),
+  col = c("cadetblue", "red"), pch = 22, pt.bg = c("cadetblue", "red"),
+  bty = "n"
+)
+```
+
+## Exercise
+
+You are now about to finish your PhD and your advisor is now sending you more emails each day ($\mu = 3.2$).
+
+What is the probability of having 2.1 emails at one particular day?
+
+## Poisson distribution
+
+```{r fig.width = 7, fig.height = 5, echo = FALSE}
+
+par(mfrow = c(2,2), mar = c(4,4,2,1))
+
+plot(0:10, dpois(0:10, 1), type = "h", xlab = "Y values", ylab = "Probability", 
+     main = expression(paste(mu, "= 1")))
+
+plot(0:10, dpois(0:10, 5), type = "h", xlab = "Y values", ylab = "Probability",
+     main = expression(paste(mu, "= 5")))
+
+plot(0:40, dpois(0:40, 10), type = "h", xlab = "Y values", ylab = "Probability",
+     main = expression(paste(mu, "= 10")))
+
+plot(50:150, dpois(50:150, 100), type = "h", xlab = "Y values", ylab = "Probability",
+     main = expression(paste(mu, "= 100")))
+
+```
+
+Some *shapes* actually look like the Gaussian distribution but they are not.
+
+## Negative binomial distribution
+
+## Negative binomial distribution
+
+The negative binomial distribution is also a type of distribution concerning count data.
+
+$$
+f(y; k, \mu) = \frac{(y + k)!}{k! \times (y + 1)!} \times \left(\frac{k}{\mu + k}\right)^k \times \left(1 - \frac{k}{\mu + k}\right)^y
+$$
+
+The first difference with the Poisson distribution is that the negative binomial has two parameters: **$k$** and **$\mu$**.
+
+In R, it can be calculated using the `dnbinom()` function.
+
+----
+
+Parameter **$k$** is often called the dispersion parameter [@Zuur2009]. Dispersion occurs when the variance is larger than the mean.
+
+$$
+\text{E}(Y) = \mu
+$$
+
+$$
+\text{var}(Y) = \mu + \frac{\mu^2}{k}
+$$
+
+The smaller $k$, the larger is dispersion.
+
+If $k$ is large, then $\frac{\mu^2}{k}$ becomes ~ 0 and the negative binomial converges to the Poisson distribution.
+
+## NB shape
+
+```{r fig.width = 7, fig.height = 5, echo = FALSE}
+
+par(mfrow = c(2,2), mar = c(4,4,2,1))
+
+plot(dnbinom(0:100, size = 1e05, mu = 100), type = "h", xlab = "Y values", 
+     ylab = "Probability", main = expression(paste(mu, "= 100", " k = 1e05")))
+
+plot(dnbinom(0:100, size = 1, mu = 100), type = "h", xlab = "Y values", 
+     ylab = "Probability", main = expression(paste(mu, "= 100", " k = 1e05")))
+
+plot(dnbinom(0:100, mu = 10, size = 10), type = "h", xlab = "Y values", 
+     ylab = "Probability", main = expression(paste(mu, "= 10", " k = 10")))
+
+plot(dnbinom(0:100, mu = 10, size = 1), type = "h", xlab = "Y values", 
+     ylab = "Probability", main = expression(paste(mu, "= 10", " k = 1")))
+
+```
+
+## large K
+
+```{r, echo = FALSE, fig.height = 4}
+par(mfrow = c(1,2))
+
+plot(dnbinom(0:100, mu = 50, size = 10000), type = "h", xlab = "Y values", 
+     ylab = "Probability", 
+     main = expression(paste("Negative binomial ", mu, "= 50", " k = 10000")))
+
+plot(dpois(0:100, 50), type = "h", xlab = "Y values", 
+     ylab = "Probability", main = expression(paste("Poisson ", mu, "= 50")))
+```
+
+If $k$ is high, then the Negative distribution is similar to the Poisson distribution.
+
+## How to choose?
+
+How to choose between a Poisson and a Negative binomial distribution?
+
+In a Poisson distribution **$E(Y) = \text{var}(Y)$**
+
+Overdispersion occurs when the variance is greater than the mean, **$E(Y)<\text{var}(Y)$**  or if the number of zeros is greater than expected.
+
+In theorie, you can use both distributions to model your count data, the estimated mean (**$\mu$**) will be similar. If you do not choose the appropriate distibution you risk to have biased standard errors which increases the likelihood of incorrectly detecting a significant treatment effect in the Poisson model.
+
+## The Gamma distribution
+
+## The Gamma distribution
+
+We have seen that both Poisson and Negative binomial distributions deal with count data values $\geq 0$.
+
+The Gamma distribution is also dealing with values $\geq 0$ **but for continuous data**.
+
+## The Gamma distribution
+
+The probability density function of a Gamma distribution is defined as:
+
+$$
+f(y; \mu, \nu) = \frac{1}{\nu!} \times \left(\frac{\nu}{\mu}\right)^\nu \times y^{\nu - 1} \times e^{\frac{y \times \nu}{\mu}}
+$$
+
+with $y > 0$
+
+with **$\mu$** the mean and **$\nu$** the dispersion parameter controlling the shape of the curve.
+
+If **$\nu$** is large, the distribution converge toward a Gaussian distribution.
+
+
+## Examples
+
+```{r fig.width = 7, fig.height = 5, echo = FALSE}
+
+y <- seq(0.01, 10, length.out = 100)
+
+plot(y, dgamma(y, shape = 6, rate = 2), type = "l", xlab = "Y values", 
+     ylab = "Probability", main = expression(paste(mu, "= 12 ", nu, " = 6")))
+
+```
+
+```{r, echo=FALSE, eval=FALSE}
+pdf_gamma <- function(y, u, v){
+  prob <- (1/factorial(v)) * (v/u)^v * y^(v-1) * exp((y*v)/u)
+  
+  return(prob)
+}
+
+
+y <- seq(0.01, 20, length.out = 100)
+
+prob <- pdf_gamma(y, u = 12, v = 6)
+
+plot(y, prob, type = "l")
+```
+
+## When to use Gamma?
+
+When the response variable is continuous, right skewed and always positive. 
+
+In such situation you could also choose to the log-transform your response variable and perform a *traditional* linear Normal model.
+
+As we will see later using a GLM with a Gamma distribution is generally a better solution.
+
+## The binomial distribution
+
+The values in a binomial distribution can only take two values: 0 or 1. 
+
+This can also be viewed as the presence/absence of an animal in an ecological study.
+
+## The binomial distribution
+
+The probability distribution of the binomial distribution is defined as:
+
+$$
+f(y;\pi, N) = \left(N \atop y \right) \times \pi^y \times (1 - \pi)^{N-y}
+$$
+
+where **$\pi \geq 0$**  is representing the probability of success and **$N \geq 1$**  the number of trials.
+
+Note that $\left(N \atop y \right) = \frac{N!}{y!(N - y)}$ 
+
+## The binomial distribution
+
+The easiest way to understand the binomial distribution is to think of an experience where you toss a coin in the air. There are only two possible outcomes: either you get a "tail" or a "head". 
+
+First, create the R function to calculate the PDF of a binomial distribution.
+
+```{r}
+pdf_binomial <- function(y, pi, N){
+  prob <- factorial(N) / (factorial(y) * factorial((N - y))) * 
+    pi^y * (1 - pi)^(N - y)
+  
+  return(prob)
+}
+```
+
+----
+
+For this example, we represent *head* as 1 (success) and *tail* as 0 (fail). If you are not cheating, the chance of having 1 (head) is 0.5 (50%) and the chance of having 0 is (1 - 0.5). 
+
+Lets verify this by calculating **$P(y = 1)$**:
+
+```{r}
+# Prob of having 1 (head) with a success rate of 50% after 1 trial
+pdf_binomial(1, pi = 0.5, N = 1)
+```
+
+That makes sens, we have 50% chance to have a *head* value after throwing a coin 1 time.
+
+----
+
+The probability of having always 1 is decreasing with increasing number of trials.
+
+```{r, fig.height = 4, fig.width = 8}
+prob <- pdf_binomial(1:10, pi = 0.5, N = 1:10)
+plot(1:10, prob * 100, type = "h", ylab = "Probabilities (%)", 
+     xlab = "Number of successive trial")
+```
+
+## Exercise {.exercises}
+
+#### Question #1
+
+What is **the probability of having 8 heads** when throwing a coin 10 times?
+
+#### Solution:
+
+1. Define the success rate for a single trial: $\pi = 0.5$
+2. Define how many successes we want: $y = 8$
+3. Define how many trials we attempt: $N = 10$
+
+```{r, class = "fragment"}
+pdf_binomial(y = 8, pi = 0.5, N = 10)
+```
+
+## Exercise {.exercises}
+
+#### Exercise #2
+
+What is the probability of having the value 2 three times when throwing a 6 faces dice four times?
+
+#### Solution:
+
+1. Define the success rate for a single trial: $\pi = \frac{1}{6}$
+2. Define how many successes we want: $y = 3$
+3. Define how many trials we attempt: $N = 4$
+
+```{r, class = "fragment"}
+pdf_binomial(y = 3, pi = 1/6, N = 4)
+```
+
+## Exercise {.exercises}
+
+#### Exercise #3
+
+What is the probability of throwing a pair of dice 24 times and have **at least** one double 6?
+
+#### Solution #1
+
+1. Define the success rate for a single trial: $\pi = \frac{1}{6}\times\frac{1}{6} = \frac{1}{36}$
+2. Define how many successes we want: $y = 1, 2, 3, ..., 24$
+3. Define how many trials we attempt: $N = 24$
+
+```{r, class = "fragment"}
+sum(pdf_binomial(y = 1:24, pi = 1/36, N = 24))
+```
+
+## Exercise {.exercises}
+
+#### Solution #2:
+
+$$
+P(Y > 0) = 1 - P(Y = 0)
+$$
+
+>1. Define the success rate for a single trial: $\pi = \frac{1}{36}$
+2. Define how many successes we want: $y = 0$
+3. Define how many trials we attempt: $N = 24$
+
+```{r}
+# The probability of failing (i.e. 0 success)
+pdf_binomial(y = 0, pi = 1/36, N = 24)
+
+# Then the probability of success 1, 2, 3, ...
+1 - pdf_binomial(y = 0, pi = 1/36, N = 24)
+```
+
+## Graphical view
+
+```{r, echo = FALSE}
+x <- 0:24
+y <- pdf_binomial(x, pi = 1/36, N = 24) * 100
+
+plot(x, y, type = "l", xlab = "Number of success", 
+     ylab = "Probability (%)",
+     xaxs = "i",
+     yaxs = "i", 
+     ylim = c(0, 50))
+
+polygon(c(x[x >= 1], 1), c(y[x >= 1], 0), col = "red")
+polygon(c(0, x[x <= 1], 1), c(0, y[x <= 1], 0), col = "cadetblue")
+legend("topright", c("P(Y < 1)", "P(Y >= 1)"), 
+       col = c("cadetblue", "red"), pch = 22, pt.bg = c("cadetblue", "red"), 
+       bty = "n")
+```
+
+
+## The main distributions
+
+The choice of the best distribution to model your response variable ($y$) should be an **a priori** choice based on the knowledge of type of data [@Zuur2009].
+
+| **Distribution of $y$** | **Type of data** | **R function** |
+|-------------------------|-------------------------------------------|----------------|
+| Normal | Continuous ($-\infty \leq y \leq \infty$) | dnorm |
+| Poisson | Count ($y \geq 0$) | dpois |
+| Negative binomial | Overdispersed count ($y \geq 0$) | dnbinom |
+| Gamma | Continuous ($y \geq 0$) | dgamma |
+| Binomial | Presence/absence ($y = 0$, $y = 1$) | dbinom |
+
+
+## GLM in R
+
+## GLM in R
+
+GLM in R are performed using the `glm()` function. The syntax of a glm model is very similar to the one of a linear model using the `lm()` function.
+
+```{r, eval = FALSE}
+glm(y ~ x, family = "gaussian")
+glm(y ~ x, family = "binomial")
+glm(y ~ x, family = "poisson")
+```
+
+The only thing that differs is the `family` argument which is used to specify from which distribution is the response variable.
+
+## Gaussian
+
+## Data sample
+
+```{r}
+my_data <- read_csv("https://goo.gl/Vn5uZi")
+languageR::pairscor.fnc(my_data)
+```
+
+## Gaussian
+
+For this first example, we will try to model a response variable (`slope`) which present a Gaussian distribution.
+
+```{r, fig.height=3.5, fig.width=5}
+ggplot(my_data, aes(x = elev, y = slope)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+## lm vs Gaussian glm
+
+```{r}
+lm_1 <- lm(slope ~ elev, data = my_data)
+summary(lm_1)
+```
+
+## lm vs Gaussian glm
+
+```{r}
+glm_gaussian <- glm(slope ~ elev, data = my_data, family = "gaussian")
+summary(glm_gaussian)
+```
+
+## Gaussian glm vs lm
+
+Two linear models with `lm()` and `glm(... family = "gaussian")` are identical.
+
+```{r}
+coef(lm_1)
+coef(glm_gaussian)
+```
+
+## Poisson and negative binomial
+
+## The data
+
+```{r}
+p <- ggplot(mpg, aes(x = displ, y = cyl)) + 
+  geom_point()
+p
+```
+
+## Poisson glm
+
+A Poisson regression is fitted using the `glm()` function with `family = "poisson"`.
+
+```{r}
+glm_poisson <- glm(cyl ~ displ, data = mpg, family = "poisson")
+```
+
+## Fitted values
+
+Lets look to the predicted values of the model. Fitted (predicted) values of a glm model can be extracted using the `predict()` function as follow:
+
+```{r}
+predicted_poisson <- predict(glm_poisson, type = "response")
+head(predicted_poisson)
+```
+
+## Regression line
+
+```{r, fig.height=4, fig.width=6, tidy=FALSE}
+p + geom_line(aes(x = mpg$displ, y = predicted_poisson), color = "red")
+```
+
+## Interpreting results
+
+```{r}
+summary(glm_poisson)
+```
+
+## Interpreting results
+
+The coefficient for `displ` is `r coef(glm_poisson)[2]`. This means that for a 1-unit increase in `displ`, the expectation (or mean) number of `cyl` increases by a factor of $e^{0.18877}$ = `r exp(0.18877)`.
+
+```{r}
+exp(coef(glm_poisson))
+```
+
+## Interpreting results
+
+```{r, echo = FALSE}
+df <- mutate(mpg, predicted = predicted_poisson) %>% 
+  dplyr::select(displ, cyl, predicted) %>% 
+  filter(displ %in% c(2,3,4,5,6)) %>% 
+  unique() %>% 
+  arrange(displ)
+```
+
+```{r, echo = FALSE, results="asis"}
+print(xtable::xtable(df), type = "html", NA.string = "NA")
+```
+
+We see that for a 1-unit increase in `displ`, the expectation (or mean) number of `cyl` increases by a factor of $e^{0.18877}$ = `r exp(0.18877)`.
+
+The number of `cyl` is increasing by `r round(exp(coef(glm_poisson)[2])*100-100, digits = 2)`% per 1-unit of `displ`.
+
+## Negative binomial
+
+## Negative binomial
+
+Remember that the binomial distribution is very similar to a Poisson distribution. We will now create a negative binomial model using the same data as for the Poisson model.
+
+In R, to perform a negative binomial regression we need to use the `glm.nb()` function from the `MASS` library.
+
+## Negative binomial
+
+```{r}
+library(MASS)
+glm_nb <- glm.nb(cyl ~ displ, data = mpg)
+
+summary(glm_nb) # Look at the dispersion parameter
+```
+
+## Negative binomial
+
+As with any glm, predicted values are obtained using the  `predict()` function.
+
+```{r}
+predicted_nb <- predict(glm_nb, type = "response")
+head(predicted_nb)
+```
+
+----
+
+```{r}
+p + geom_line(aes(x = mpg$displ, y = predicted_nb), 
+              color = "blue")
+```
+
+## Which one to choose
+
+Looking at the summary of the Negative binomial regression we have a large dispersion coefficient (**$K$**  = `r round(glm_nb$theta)`). It is a first sign that we should stick with the Poisson model.
+
+Additionally, the coefficients for both models are equal.
+
+```{r}
+coef(glm_poisson)
+coef(glm_nb)
+
+```
+
+## Which one to choose
+
+A useful way to select models in general is to use the Bayesian Information Criterion (BIC).
+
+$$
+\text{BIC} = -2 \times ln(\hat{L}) + k \times ln(n)
+$$
+
+Where $n$ is the number of data points (observations), $k$ the number of parameters to be estimated and $\hat{L}$ the maximized value of the likelihood function of the model [@Burnham2002; @Zuur2009].
+
+## Which one to choose
+
+The BIC value is used to compare models.  It is based on the principle of parsimony, **helping to identify the model that accounts for the most variation with the fewest variables**. 
+
+## Which one to choose
+
+Such a model selection method requires the calculation of the BIC differences ($\Delta_i$) for all candidate models as follow:
+
+$$
+\Delta_i = \text{BIC}_i - \text{BIC}_{\text{min}}
+$$
+
+| **$\Delta_i$** | **Evidence against higher BIC** |
+|----------------|---------------------------------|
+| 0-2            | Weak                            |
+| 2-6            | Positive                        |
+| 6-10           | Strong                          |
+| 10+            | Very strong                     |
+
+## Which one to choose
+
+In R, BIC are calculated using the `BIC()` function.
+
+```{r}
+BIC(glm_poisson, glm_nb)
+```
+
+If we look at the $\Delta_i$ values.
+
+```{r}
+BIC(glm_poisson, glm_nb)$BIC - min(BIC(glm_poisson, glm_nb)$BIC)
+```
+
+Based on these values, we can conclude that the Poisson model is the best option.
+
+## Exercise {.exercises}
+
+#### Exercise #1
+
+Use the following data to perform a GLM regression between `distance` and `count`. Why distribution should you use?
+
+```{r, eval = FALSE}
+my_data <- read_csv("https://goo.gl/Vn5uZi")
+```
+
+```{r, echo = FALSE, fig.height = 3, fig.width = 5}
+ggplot(my_data, aes(x = distance, y = count)) +
+  geom_point()
+```
+
+```{r, echo = FALSE, eval = FALSE}
+
+glm_poisson <- glm(count ~ distance, data = my_data, family = poisson("log"))
+glm_nb <- glm.nb(count ~ distance, data = my_data, link = "log")
+
+BIC(glm_poisson, glm_nb)
+
+ggplot(my_data, aes(x = distance, y = count)) +
+
+  geom_point() +
+
+  geom_line(aes(my_data$distance,
+    y = predict(glm_poisson, type = "response"),
+    color = "Poisson"
+  )) +
+
+  geom_line(aes(my_data$distance,
+    y = predict(glm_nb, type = "response"),
+    color = "Negative binomial"
+  )) +
+
+  labs(color = "Distribution") +
+
+  theme(legend.position = "top")
+
+summary(glm_poisson)
+summary(glm_nb)
+
+```
+
+## Binomial regression
+
+## Binomial regression
+
+For this example, we are going to use the presence/absence data.
+
+```{r, fig.height=3.5, fig.width=6}
+p <- ggplot(my_data, aes(x = area, y = presence)) + geom_point()
+p
+```
+
+## Binomial regression
+
+A Binomial regression is fitted using the `glm()` function with `family = "binomial"`.
+
+```{r, tidy=TRUE}
+glm_binomial <- glm(presence ~ area, data = my_data, family = "binomial")
+```
+
+As with any glm, predicted values are obtained using the  `predict()` function.
+
+```{r}
+predicted_binomial <- predict(glm_binomial, type = "response")
+head(predicted_binomial)
+```
+
+## Fitted values
+
+```{r,fig.height=4, fig.width=6}
+p + geom_line(aes(x = my_data$area, y = predicted_binomial), color = "red") +
+  geom_hline(yintercept = 0.5, lty = 2)
+
+```
+
+## Interpreting results
+
+```{r}
+summary(glm_binomial)
+```
+
+## Interpreting results
+
+```{r, echo = FALSE}
+df <- mutate(my_data, predicted = predicted_binomial) %>% 
+  dplyr::select(area, presence, predicted) %>% 
+  filter(area %in% c(530:535)) %>% 
+  unique() %>% 
+  arrange(area)
+```
+
+```{r}
+df
+```
+
+```{r}
+exp(coef(glm_binomial))
+```
+
+## Gamma distribution
+
+## Gamma distribution
+
+```{r, echo = FALSE}
+set.seed(999)
+N <- 100
+x <- runif(N, -1, 1)
+a <- 0.5
+b <- 1.2
+y_true <- exp(a + b * x)
+shape <- 10
+y <- rgamma(N, rate = shape / y_true, shape = shape)
+write_csv(data.frame(x = x, y = y), "data/data_gamma.csv")
+```
+
+We will use the following dataset to understand the Gamma distribution.
+
+```{r}
+data_gamma <- read_csv("data/data_gamma.csv")
+```
+
+Lets give a look to the relation between `x` and `y`. 
+
+## Graphical view
+
+```{r}
+ggplot(data_gamma, aes(x = x, y = y)) + geom_point() 
+```
+
+----
+
+Looking at the histogram of `y` we could decide to log-transform the data.
+
+```{r, echo = -1, fig.height = 3.5}
+par(mfrow = c(1,2))
+hist(data_gamma$y)
+hist(log(data_gamma$y))
+```
+Note: $y_i \geq 0$ which is an essential condition for applying a Gamma GLM.
+
+## Graphical view
+
+```{r}
+ggplot(data_gamma, aes(x = x, y = log(y))) + geom_point() 
+
+```
+
+## Normal LM
+
+```{r}
+my_lm <- lm(log(y) ~ x, data = data_gamma)
+
+summary(my_lm)
+```
+
+## Regression line
+
+```{r, fig.height = 4.5}
+ggplot(data_gamma, aes(x = x, y = log(y))) + geom_point() +
+  geom_line(aes(x = data_gamma$x, y = predict(my_lm)), col = "red")
+```
+
+## Gamma regression
+
+```{r}
+glm_gamma <- glm(y ~ x, family = Gamma(link = "log"))
+
+summary(glm_gamma)
+```
+
+## Interpretation
+
+```{r, echo = FALSE}
+df <- data.frame(
+  x = -1:1,
+  predicted = predict(glm_gamma, newdata = list(x = -1:1), type = "response"))
+```
+
+```{r, echo = FALSE}
+df
+```
+
+We see that for a 1-unit increase in `x`, the expectation (or mean) number of `y` increases by a factor of $e^{1.16522}$ = `r exp(1.16522)`.
+
+```{r}
+# Calculate increase from -1 to 0 (1-unit increase)
+0.4820882 * exp(1.16522)
+```
+
+## Graphical view
+
+```{r, fig.height = 4.5}
+ggplot(data_gamma, aes(x = x, y = y)) + geom_point() +
+  geom_line(aes(x = data_gamma$x, y = predict(glm_gamma, type = "response")), col = "red")
+```
+
+## Gamma or LM?
+
+```{r}
+# Coefficients for the log-transformed model
+summary(my_lm)$coefficients
+
+# Coefficients for the Gamma GLM
+summary(glm_gamma)$coefficients
+```
+
+We can see that the standard errors on estimated coefficients are lower for the Gamma GLM.
+
+<!-- ## Confidence interval -->
+
+```{r,fig.height = 4, fig.width = 6, eval = FALSE, echo = FALSE}
+conf <- predict(glm_binomial, type = "response", se.fit = TRUE)
+
+p + geom_line(aes(x = my_data$area, y = predicted_binomial), color = "red") +
+  geom_line(aes(x = my_data$area, y = conf$fit + 1.96 * conf$se.fit), lty = 2) +
+  geom_line(aes(x = my_data$area, y = conf$fit - 1.96 * conf$se.fit), lty = 2)
+```
+
+## GLM and $R^2$
+
+## GLM and $R^2$
+
+Calculating $R^2$ value for a GLM is not straightforward. However, if you absolutely want to have a value you can use the `pR2()` function from the `pscl` package.
+
+```{r}
+library(pscl)
+
+pR2(glm_gamma)
+```
+
+Be conservative: choose the lowest value between `McFadden`, `r2ML` and `r2CU`.
+
+## Your turn!
+
+Use your own data and try to fit and evaluate a GLM model (Poisson, Negative binomial, Gamma, binomial).
+
+## Additional resources
+
+<small>
+
+http://www.ats.ucla.edu/stat/r/dae/poissonreg.htm
+
+https://sites.google.com/site/rforfishandwildlifegrads/home/mumin_usage_examples
+
+http://datavoreconsulting.com/programming-tips/count-data-glms-choosing-poisson-negative-binomial-zero-inflated-poisson
+
+https://en.wikipedia.org/wiki/Bayesian_information_criterion
+
+http://users.ecs.soton.ac.uk/jn2/teaching/logisticRegression.pdf
+
+http://nlp.stanford.edu/manning/courses/ling289/logistic.pdf
+
+http://bayes.bgsu.edu/m6480/homework/HW2%20-%20Monte%20Carlo/R%20intro%20II.pdf 
+
+http://rstudio-pubs-static.s3.amazonaws.com/5691_192685385fc445c9b3fb1619960a20e2.html 
+
+http://datavoreconsulting.com/programming-tips/count-data-glms-choosing-poisson-negative-binomial-zero-inflated-poisson/
+
+https://sites.google.com/site/rforfishandwildlifegrads/home/mumin_usage_examples
+
+http://www.ats.ucla.edu/stat/r/dae/poissonreg.htm
+
+</small>
+
+## References  {.refsection}

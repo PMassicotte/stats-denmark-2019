@@ -54,7 +54,7 @@ Research assistant at Takuvik (Laval University, Québec, Canada)
 
 - Data relevant to environmental issues is produced very rapidly at high spacial and temporal scales.
   - Remote sensing, animal tagging/tracking
-  - Automated *in-situ* sensors (salinity, Chl*a*, ...)
+  - Automated *in-situ* sensors (salinity, Chla, ...)
   - *No, we are not doing big data science*
 
 - As scientists, **you need** to learn and practice essential tools for capturing, manipulating and sharing data.

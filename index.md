@@ -1,6 +1,6 @@
-# SDF
+# Numerical ecology - Basic data handling and statistics using R
 
-sdf
+Teaching material for the lecture week (Aarhus University, Campus Roskilde).
 
 ## Course content
 

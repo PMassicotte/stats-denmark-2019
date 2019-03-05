@@ -1,0 +1,443 @@
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE,
+  dev = "svg",
+  fig.width = 7,
+  fig.height = 5,
+  fig.align = "center",
+  tidy = TRUE,
+  tidy.opts = list(width.cutoff = 50)
+)
+
+library(tidyverse)
+library(extrafont)
+loadfonts(quiet = TRUE)
+
+theme_set(theme_bw(base_size = 16, base_family = "Open Sans"))
+
+library(ape)
+library(pgirmess)
+library(nlme)
+library(sjPlot)
+
+```
+
+## What is spatial autocorrelation?
+
+<!-- http://rfunctions.blogspot.com/2017/06/how-to-identify-and-remove-spatial.html -->
+
+- Spatial structures play important roles in the analysis of ecological data. Living communities are spatially structured at many spatial scales (@Borcard2011).
+
+- The environmental elements such as climatic, physical, chemical forces control living communities. **If these factors are spatially structured, their patterns will reflect on the living communities.**
+  - Example: patches in the desert where the soil is humid enough to support vegetation.
+
+## Spatial autocorrelation
+
+According to the geographer Waldo R. Tobler, the first law of geography is:
+
+> Everything is related to everything else, but near things are more related than distant things.
+
+**Spatial autocorrelation can causes problems for statistical methods that make assumptions about the independence of residuals.**
+
+## Spatial autocorrelation
+
+Spatial data can be positively spatially autocorrelated, negatively spatially autocorrelated, or not (or randomly) spatially autocorrelated.
+
+<small>
+**A positive spatial autocorrelation** means that similar values are close to each other. <br><br>
+**A negative spatial autocorrelation** means that similar values are distant from each other. <br><br>
+**A random spatial autocorrelation** means that, in general, similar values are neither close nor distant from each other. 
+</small>
+
+```{r, echo=FALSE, fig.width=15}
+set.seed(1)
+
+par(mfrow = c(1, 3))
+
+m <- matrix(0, 9, 9)
+m[1:4, ] <- 1
+
+image(m, col = 0:1, xlim = c(-.05, .93), ylim = c(-.05, .93), main = "Positive spatial autocorrelation", cex.main = 2.5, cex.axis = 2, xaxt = "n", yaxt = "n")
+image(matrix(1:0, 9, 9), col = 0:1, xlim = c(-.05, .93), ylim = c(-.05, .93), main = "Negative spatial autocorrelation", cex.main = 2.5, cex.axis = 2, xaxt = "n", yaxt = "n")
+image(matrix(sample(c(0, 1), 81, replace = TRUE), 9, 9), col = 0:1, xlim = c(-.05, .93), ylim = c(-.05, .93), main = "No spatial autocorrelation", cex.main = 2.5, cex.axis = 2, xaxt = "n", yaxt = "n")
+
+```
+
+## Moran's index
+
+The Moran's index (**Moran's I**) is widely used to measure spatial autocorrelation based on feature locations and feature values simultaneously.
+
+\begin{equation}
+    I = \frac{n}{S_0}
+    \frac{\displaystyle\sum_{i=1}^n \sum_{j=1}^n w_{ij}(x_i - \bar{x})(x_j - \bar{x})}{\displaystyle\sum_{i=1}^n (x_i - \bar{x})^2}
+    \label{eq:morani}
+\end{equation}
+where $w_{ij}$ is the weight between observation $i$ and $j$, and
+$S_0$ is the sum of all $w_{ij}$'s.
+
+## Moran's index
+
+Moran's I can vary between -1 and 1 (**like a normal correlation index**).
+
+```{r, echo=FALSE, fig.width=15}
+set.seed(1)
+
+par(mfrow = c(1, 3))
+
+m <- matrix(0, 9, 9)
+m[1:4, ] <- 1
+
+image(m, col = 0:1, xlim = c(-.05, .93), ylim = c(-.05, .93), main = "Positive spatial autocorrelation", cex.main = 2.5, cex.axis = 2, xaxt = "n", yaxt = "n", sub = "Positive I", cex.sub = 4)
+image(matrix(1:0, 9, 9), col = 0:1, xlim = c(-.05, .93), ylim = c(-.05, .93), main = "Negative spatial autocorrelation", cex.main = 2.5, cex.axis = 2, xaxt = "n", yaxt = "n", sub = "Negative I", cex.sub = 4)
+image(matrix(sample(c(0, 1), 81, replace = TRUE), 9, 9), col = 0:1, xlim = c(-.05, .93), ylim = c(-.05, .93), main = "No spatial autocorrelation", cex.main = 2.5, cex.axis = 2, xaxt = "n", yaxt = "n", sub = "I around 0", cex.sub = 4)
+```
+
+## Moran's I
+
+There are two types of Moran's I:
+
+1. **Global Moran's I** is a measure of the overall spatial autocorrelation. 
+2. **Local Moran's I** is a measure of the local spatial autocorrelation (e.x.: locally at each station).
+
+## A working example
+
+We will use bird diversity data (https://bit.ly/2BLOwdd) to learn how to deal with spatial autocorrelation.
+
+```{r}
+df <- read_table2("data/bird.diversity.txt") # Load tidyverse first
+df <- janitor::clean_names(df) # Clean column names
+
+df
+```
+
+## Tree diversity explains bird diversity
+
+There is indeed a positive influence of tree diversity on bird diversity.
+
+```{r, fig.height=4, fig.width=6}
+ggplot(df, aes(x = tree_diversity, y = bird_diversity)) +
+  geom_point(size = 3) +
+  geom_smooth(method = "lm")
+```
+
+## Spatial distribution of the data
+
+Spatial pattern in the data?
+
+```{r, fig.height=4, fig.width=7}
+ggplot(df, aes(x = lon_x, y = lat_y, size = bird_diversity)) +
+  geom_point()
+```
+
+## Spatial distribution of the data
+
+Relationships between geographical coordinates and bird diversity.
+
+```{r, echo = FALSE}
+df %>% 
+  dplyr::select(-site, -tree_diversity) %>% 
+  languageR::pairscor.fnc()
+```
+
+## Global Moran's I
+
+To calculate Moran’s I, we first need to generate a **matrix of inverse distance weights**. We also need to set the diagonal of the matrix to 0.
+
+```{r, tidy=FALSE}
+sample_distances <- as.matrix(dist(cbind(df$lon_x, df$lat_y)))
+sample_distances_inv <- 1 / sample_distances
+diag(sample_distances_inv) <- 0
+
+sample_distances_inv[1:6, 1:6] # Show a subset of the data
+```
+
+## Notes on the calculation of spatial weights
+
+**Spatial analysis, in general, should not use lat/long when spatial weights are calculated.** This is because observations from distant locations can cause distortion. It is better to calculate distances based on spherical coordinates (projection based coordinates). This can be done using the **geosphere** package.
+
+## Global Moran's I
+
+We need to install the `ape` package to calculate global Moran's I.
+
+```{r, eval=FALSE}
+install.packages("ape")
+library(ape)
+```
+
+## Global Moran's I
+
+The global Moran's I is then calculated using the `Moran.I()` function.
+
+```{r}
+moran <- Moran.I(df$bird_diversity, sample_distances_inv)
+moran
+```
+
+## Global Moran's I
+
+Note that under the null hypothesis that there is no spatial autocorrelation, I is calculated as:
+
+$$
+I = -1/(N-1)
+$$
+where **N** is the number of observations.
+
+```{r}
+-1/(nrow(df) -1) # Expected Moran's I
+```
+
+Here, the **observed** global Moran's I has a value of `r round(moran$observed, digits = 2)`. Based on these results and the low p-value, **we can reject the null hypothesis** that there is zero spatial autocorrelation present in the bird diversity data.
+
+## Local Moran's I
+
+Now that we know that there is positive spatial autocorrelation, we can verify at which spatial scales this is occurring. This can be done using the `correlog()` function from the `pgirmess` package.
+
+```{r, eval=FALSE}
+install.packages("pgirmess")
+library(pgirmess)
+```
+
+## Local Moran's I
+
+```{r}
+clog <- correlog(df[, c("lon_x", "lat_y")], z = df$bird_diversity)
+plot(clog)
+```
+
+## A graphical view
+
+```{r, echo = FALSE, fig.width=9, fig.height=7}
+library(spdep)
+
+nb_to_df <- function(nb, coords) {
+  x <- coords[, 1]
+  y <- coords[, 2]
+  n <- length(nb)
+  cardnb <- card(nb)
+  i <- rep(1:n, cardnb)
+  j <- unlist(nb)
+  return(data.frame(
+    x = x[i], xend = x[j],
+    y = y[i], yend = y[j]
+  ))
+}
+
+distan <- dnearneigh(as.matrix(df[, c("lon_x", "lat_y")]), 0.1185693, 0.5618655)
+df2 <- nb_to_df(distan, as.matrix(df[, c("lon_x", "lat_y")]))
+
+ggplot() +
+  geom_segment(aes(
+    x = x,
+    xend = xend,
+    y = y,
+    yend = yend
+  ), size = 0.1, alpha = 0.5,
+  data = df2) +
+  geom_point(data = df, aes(x = lon_x, y = lat_y), color = "red") +
+  xlab("Longitude") +
+  ylab("Latitude")
+
+
+```
+
+
+## Taking care of spatial autocorrelation
+
+## Taking care of spatial autocorrelation
+
+There are many approaches to account for spatial autocorrelation (we will see two today).
+
+1. Include the geographical positions, i.e. **the latitude-longitude interaction term** in the analyses.
+2. Explicitly provide a spatial correlation structure that describes the nature of the autocorrelation. 
+
+## Method 1: Include the geographical positions
+
+> - First, we create the *null* model where we do not control for spatial autocorrelation.
+
+> - Then, to account for potential spatial autocorrelation we include the geographical position, i.e. the latitude-longitude interaction term in the analyses.
+
+> - Finally, we compare both models to see if spatial autocorrelation is present in the data.
+
+## Method 1: Include the geographical positions
+
+Create the *null* model.
+
+```{r, echo=-3}
+# Simple lm model to predict bird diversity
+mod_null <- lm(bird_diversity ~ tree_diversity, data = df)
+tab_model(mod_null)
+```
+
+Based on this model, `tree_diversity` explains `r round(vegan::RsquareAdj(mod_null)$r.squared, digits = 2) *100` % of the `bird_diversity` variance.
+
+## Method 1: Include the geographical positions
+
+Create the model with the lat/lon **interaction**.
+
+```{r}
+mod_lon_lat <- lm(bird_diversity ~ tree_diversity + lon_x * lat_y, data = df)
+```
+
+<small>
+```{r, echo=FALSE}
+tab_model(mod_lon_lat)
+```
+Note the p-value of **tree_diversity**.
+
+</small>
+
+## Comparing models
+
+We can compare the models using Akaike's Information Criterion (AIC).
+
+```{r}
+AIC(mod_null, mod_lon_lat)
+```
+The results suggest that the `mod_lon_lat` model is a better choice. This further suggests that `tree_diversity` has a limited influence on `bird_diversity`.
+
+## Method 2: provide a spatial correlation structure
+
+<small>
+Using a variogram (also called semivariogram) is another useful way at looking for spatial autocorrelation. A variogram shows how the total variance in the data is related to the distance between observations. 
+</small>
+
+<center>
+![](http://www.flutterbys.com.au/stats/tut/images/graphics-tut8_4a-tut8.4aS3.0a-1.png)
+</center>
+
+<small>
+Image from http://www.flutterbys.com.au/stats/tut/tut8.4a.html
+</small>
+
+## Method 2: provide a spatial correlation structure
+
+A variogram can take different shapes.
+
+<center>
+![](http://plantecology.syr.edu/fridley/bio793/R_march29_notes_files/image001.jpg)
+</center>
+
+<small>
+Image from Pinheiro and Bates 2004, p. 233
+</small>
+
+## Method 2: provide a spatial correlation structure
+
+Variograms can be calculated using the `Variogram()` function from the `nlme` package. First, we need to create a Generalized Least Squares model using the `gls()`.
+
+```{r, eval=FALSE}
+install.packages("nlme")
+library(nlme)
+```
+
+```{r, tidy=FALSE}
+# Create a null model
+mod <- gls(bird_diversity ~ 1, data = df)
+
+# Calculate the variogram on the model
+semivario <-
+  Variogram(mod, form = ~ lon_x + lat_y, resType = "normalized")
+```
+
+----
+
+```{r, fig.width=4, fig.height=3}
+plot(semivario, smooth = TRUE)
+```
+
+<figure>
+  <img src="http://plantecology.syr.edu/fridley/bio793/R_march29_notes_files/image001.jpg" height="250">
+</figure>
+
+## Method 2: provide a spatial correlation structure
+
+We will now test different spatial correlation structures and see which one is best for our data. This is done by setting the `correlation` argument in the `gls()` function.
+
+----
+
+```{r, tidy = FALSE}
+# Model without spatial structure
+mod1 <- gls(bird_diversity ~ tree_diversity, data = df)
+
+# Model with Gaussian structure
+mod_gaus <-
+  gls(
+    bird_diversity ~ tree_diversity,
+    correlation = corGaus(form = ~ lon_x + lat_y, nugget = TRUE),
+    data = df
+  )
+
+# Model with a Linear structure
+mod_lin <-
+  gls(
+    bird_diversity ~ tree_diversity,
+    correlation = corLin(form = ~ lon_x + lat_y, nugget = TRUE),
+    data = df
+  )
+```
+
+----
+
+```{r, tidy=FALSE}
+# Model with Exponential structure
+# mod_exp <-
+#   gls(
+#     bird_diversity ~ tree_diversity,
+#     correlation = corExp(form = ~ lon_x + lat_y, nugget = TRUE),
+#     data = df
+#   )
+
+# Model with Spherical structure
+mod_spher <-
+  gls(
+    bird_diversity ~ tree_diversity,
+    correlation = corSpher(form = ~ lon_x + lat_y, nugget = TRUE),
+    data = df
+  )
+
+# Model with Rational Quadratic Correlation Structureo
+mod_ratio <-
+  gls(
+    bird_diversity ~ tree_diversity,
+    correlation = corRatio(form = ~ lon_x + lat_y, nugget = TRUE),
+    data = df
+  )
+```
+
+
+## Comparing models
+
+```{r}
+AIC(mod1, mod_gaus, mod_lin, mod_spher, mod_ratio)
+```
+
+Based on the AIC, we can choose between the **Gaussian Correlation** and the **Rational Quadratic Correlation** structures.
+
+## Variogram on the residuals
+
+The quick inspection of the variogram calculated on the residuals confirms that the spatial structure is gone.
+
+```{r, fig.width=6, fig.height=4}
+semivario <- Variogram(mod_gaus, form = ~lon_x + lat_y, resType = "normalized")
+plot(semivario, smooth = TRUE)
+```
+
+## Comparing models
+
+```{r, echo=FALSE}
+tab_model(mod1, mod_gaus, dv.labels = c("NULL model", "Gaussian model"))
+```
+
+After modeling the spatial structure in the data, `tree_diversity` is not significant.
+
+## Take home messages
+
+- At first, `tree_diversity` seemed to be an important predictor of `bird_diversity`.
+- Including `lon_x` and `lat_y` interaction in a simple linear model suggested that autocorrelation was present in the data.
+- Moran's I confirmed that there was positive spatial autocorrelation in the data.
+- Including a Gaussian spatial structure, based on the results of the variogram, modelled adequately the spatial autocorrelation.
+- **Conclusion**: there is no relationship between `bird_diversity` and `tree_diversity` (we first identified a false positive in the data).
+
+## References
+  

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   xml:space="preserve"
+   width="885.82678"
+   height="354.33072"
+   viewBox="0 0 885.82678 354.33072"
+   sodipodi:docname="ggplot2.svg"
+   inkscape:export-filename="/media/work/courses/denmark-2019/numerical ecology/myfigs/ggplot2.svg.png"
+   inkscape:export-xdpi="200"
+   inkscape:export-ydpi="200"><metadata
+     id="metadata8"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+     id="defs6" /><sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="1"
+     inkscape:pageshadow="2"
+     inkscape:window-width="2560"
+     inkscape:window-height="1388"
+     id="namedview4"
+     showgrid="false"
+     inkscape:zoom="1.3275733"
+     inkscape:cx="327.51228"
+     inkscape:cy="235.84219"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g12"
+     inkscape:pagecheckerboard="false" /><g
+     id="g10"
+     inkscape:groupmode="layer"
+     inkscape:label="ggplot2"
+     transform="matrix(1.25,0,0,-1.25,0,354.33071)"><g
+       id="g12"><text
+   transform="matrix(1,0,0,-1,32,165.71432)"
+   style="font-variant:normal;font-weight:normal;line-height:0%;font-family:'Open Sans';-inkscape-font-specification:OpenSans;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+   id="text14"><tspan
+     x="0 17.504 35.007999 54.591999 62.751999 82.080002 93.375999 102.816 122.4 140.192 151.584 169.37601 177.664 195.936 204.224 233.98399 253.56799 271.07199 279.008 287.29599 305.08801 323.04001 338.30399 347.74399 364.48001 372.76801 391.04001 399.328 418.91199 426.97601 442.23999 461.82401 469.98401 477.82401 486.112 502.20801 510.496 528.76801 537.05603 556.672 581.53601 597.63202 607.07202 616.51202"
+     y="0"
+     sodipodi:role="line"
+     id="tspan16"
+     style="font-size:32px;line-height:1.25">ggplot(data = mpg, aes(x = displ, y = hwy)) </tspan></text>
+
+<text
+   transform="matrix(1,0,0,-1,666.038,165.71432)"
+   style="font-variant:normal;font-weight:bold;font-size:32px;line-height:0%;font-family:'Open Sans';-inkscape-font-specification:OpenSans-Bold;writing-mode:lr-tb;fill:#bc2122;fill-opacity:1;fill-rule:nonzero;stroke:none"
+   id="text18"><tspan
+     x="0"
+     y="0"
+     id="tspan20">+</tspan></text>
+
+<text
+   transform="matrix(1,0,0,-1,31.999988,85.714317)"
+   style="font-variant:normal;font-weight:normal;line-height:0%;font-family:'Open Sans';-inkscape-font-specification:OpenSans;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+   id="text22"><tspan
+     x="0 17.504 35.456001 54.784 84.543999 98.879997 118.464 137.79201 145.856 165.472 176.76801 186.20799 194.72 203.23199 211.744"
+     y="0"
+     sodipodi:role="line"
+     id="tspan24"
+     style="font-size:32px;line-height:1.25">geom_point(...)</tspan></text>
+
+<g
+   id="g26"
+   transform="matrix(1,0,0,-1,0,283.46457)"><path
+     d="m 272.156,85.621 -8.566,8.332 -8.778,-8.289 17.344,-0.043 z m -8.672,-21.773 0,28.195"
+     style="fill:#1a1a1a;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.44596499;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="path28"
+     inkscape:connector-curvature="0" /></g><text
+   transform="matrix(1,0,0,-1,225.14285,226.85714)"
+   style="font-variant:normal;font-weight:bold;line-height:0%;font-family:'Open Sans';-inkscape-font-specification:OpenSans-Bold;writing-mode:lr-tb;fill:#dd2a2b;fill-opacity:1;fill-rule:nonzero;stroke:none"
+   id="text30"><tspan
+     x="0 23.68 43.007999 56.896"
+     y="0"
+     sodipodi:role="line"
+     id="tspan32"
+     style="font-size:32px;line-height:1.25">Data</tspan></text>
+
+<g
+   id="g34"
+   transform="matrix(1,0,0,-1,0,283.46457)"><path
+     d="m 492.961,71.359 -8.57,8.332 -8.774,-8.289 17.344,-0.043 z m -8.672,-21.773 0,28.195"
+     style="fill:#1a1a1a;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.44596499;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="path36"
+     inkscape:connector-curvature="0" /></g><text
+   transform="matrix(1,0,0,-1,409.33765,239.97691)"
+   style="font-variant:normal;font-weight:bold;line-height:0%;font-family:'Open Sans';-inkscape-font-specification:OpenSans-Bold;writing-mode:lr-tb;fill:#dd2a2b;fill-opacity:1;fill-rule:nonzero;stroke:none"
+   id="text38"><tspan
+     x="0 22.048 40.928001 56.832001 70.720001 91.744003 110.72 124.608 134.368"
+     y="0"
+     sodipodi:role="line"
+     id="tspan40"
+     style="font-size:32px;line-height:1.25">Aesthetic</tspan></text>
+
+<g
+   id="g42"
+   transform="matrix(1,0,0,-1,0,283.46457)"><path
+     d="m 325.715,91.402 317.14,-3.043"
+     style="fill:#bc2122;fill-opacity:1;fill-rule:evenodd;stroke:#dd2a2b;stroke-width:2.4000001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="path44"
+     inkscape:connector-curvature="0" /></g><g
+   id="g46"
+   transform="matrix(1,0,0,-1,0,283.46457)"><path
+     d="m 116.543,219.633 8.57,-8.332 8.774,8.289 -17.344,0.043 z m 8.672,21.773 0,-28.195"
+     style="fill:#1a1a1a;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.44596499;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="path48"
+     inkscape:connector-curvature="0" /></g><text
+   transform="matrix(1,0,0,-1,78.806915,12.548351)"
+   style="font-variant:normal;font-weight:bold;line-height:0%;font-family:'Open Sans';-inkscape-font-specification:OpenSans-Bold;writing-mode:lr-tb;fill:#dd2a2b;fill-opacity:1;fill-rule:nonzero;stroke:none"
+   id="text50"><tspan
+     x="0 23.167999 42.048 61.855999"
+     y="0"
+     sodipodi:role="line"
+     id="tspan52"
+     style="font-size:32px;line-height:1.25">Geom</tspan></text>
+
+<g
+   id="g54"
+   transform="matrix(1,0,0,-1,0,283.46457)"><path
+     d="m 233.039,219.957 0.762,-11.926 12.066,0.254 -12.828,11.672 z m 21.043,10.324 -18.922,-20.902"
+     style="fill:#1a1a1a;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.44596499;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="path56"
+     inkscape:connector-curvature="0" /></g><text
+   transform="matrix(1,0,0,-1,261.58594,45.14171)"
+   style="font-variant:normal;font-weight:bold;line-height:0%;font-family:'Open Sans';-inkscape-font-specification:OpenSans-Bold;writing-mode:lr-tb;fill:#dd2a2b;fill-opacity:1;fill-rule:nonzero;stroke:none"
+   id="text58"><tspan
+     x="0 22.048 42.271999 62.495998 72.255997 86.143997 95.903999 115.712 136.73599 156.064 165.82401 174.112 194.336 213.664 228.192 247.52 278.91199 297.79199 311.67999 330.56 345.08801"
+     y="0"
+     sodipodi:role="line"
+     id="tspan60"
+     style="font-size:32px;line-height:1.25">Additional parameters</tspan></text>
+
+</g></g></svg>

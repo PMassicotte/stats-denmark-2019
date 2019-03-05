@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="490"
+   height="270"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="function_definition.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.979899"
+     inkscape:cx="138.66906"
+     inkscape:cy="94.12229"
+     inkscape:document-units="px"
+     inkscape:current-layer="g3931"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1028"
+     inkscape:window-x="1920"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-782.36212)">
+    <g
+       id="g3931"
+       transform="translate(-1.4285715,-77.142859)">
+      <text
+         sodipodi:linespacing="125%"
+         id="text2985"
+         y="973.38629"
+         x="11.538116"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Monospace;-inkscape-font-specification:Monospace"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Open Sans;-inkscape-font-specification:Open Sans"
+           y="973.38629"
+           x="11.538116"
+           id="tspan2987"
+           sodipodi:role="line">myfunc &lt;- <tspan
+   style="fill:#4484e8"
+   id="tspan3022">function</tspan>(x, y, z)</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3798"
+         y="887.88098"
+         x="16.833185"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Monospace;-inkscape-font-specification:Monospace"
+         xml:space="preserve"><tspan
+           style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#ff0000;font-family:Lato;-inkscape-font-specification:Lato"
+           y="887.88098"
+           x="16.833185"
+           id="tspan3800"
+           sodipodi:role="line">Function name</tspan></text>
+      <path
+         inkscape:connector-curvature="0"
+         d="m 84.682936,930.84133 -10.70653,10.41514 -10.971998,-10.35915 z m -10.839262,-27.21299 0,35.24152"
+         style="fill:#1a1a1a;stroke:#000000;stroke-width:0.55745608px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="path3013-0" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text3798-4-9"
+         y="887.95099"
+         x="299.98972"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Monospace;-inkscape-font-specification:Monospace"
+         xml:space="preserve"><tspan
+           style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#ff0000;font-family:Lato;-inkscape-font-specification:Lato"
+           y="887.95099"
+           x="299.98972"
+           sodipodi:role="line"
+           id="tspan3967">Function definition</tspan></text>
+      <path
+         inkscape:connector-curvature="0"
+         d="m 310.49906,930.84133 -10.70654,10.41513 -10.97199,-10.35913 z m -10.83927,-27.21299 0,35.24152"
+         style="fill:#1a1a1a;stroke:#000000;stroke-width:0.55745608px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="path3013-0-0-4" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text2985-0"
+         y="1019.7944"
+         x="13.78421"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#4484e8;fill-opacity:1;stroke:none;font-family:Monospace;-inkscape-font-specification:Monospace"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#4484e8;font-family:Open Sans;-inkscape-font-specification:Open Sans"
+           y="1019.7944"
+           x="13.78421"
+           id="tspan2987-8"
+           sodipodi:role="line">{</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text2985-0-8"
+         y="1116.8793"
+         x="13.569366"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#4484e8;fill-opacity:1;stroke:none;font-family:Monospace;-inkscape-font-specification:Monospace"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#4484e8;font-family:Open Sans;-inkscape-font-specification:Open Sans"
+           y="1116.8793"
+           x="13.569366"
+           id="tspan2987-8-9"
+           sodipodi:role="line">}</tspan></text>
+      <text
+         sodipodi:linespacing="125%"
+         id="text3798-4-9-6"
+         y="1048.0836"
+         x="229.00255"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Monospace;-inkscape-font-specification:Monospace"
+         xml:space="preserve"><tspan
+           style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#ff0000;font-family:Lato;-inkscape-font-specification:Lato"
+           y="1048.0836"
+           x="229.00255"
+           sodipodi:role="line"
+           id="tspan3967-6">Body of the function</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Monospace;-inkscape-font-specification:Monospace"
+         x="308.43402"
+         y="909.50494"
+         id="text3097"
+         sodipodi:linespacing="125%"
+         inkscape:transform-center-x="15"
+         inkscape:transform-center-y="-20"><tspan
+           sodipodi:role="line"
+           id="tspan3099"
+           x="308.43402"
+           y="909.50494"
+           style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Open Sans;-inkscape-font-specification:Open Sans">Defines the argument(s) </tspan><tspan
+           sodipodi:role="line"
+           x="308.43402"
+           y="924.50494"
+           style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Open Sans;-inkscape-font-specification:Open Sans"
+           id="tspan3101">used by the function. </tspan></text>
+      <flowRoot
+         xml:space="preserve"
+         id="flowRoot3015"
+         style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Open Sans;-inkscape-font-specification:Open Sans;text-anchor:start;text-align:justify"
+         transform="translate(1.4285715,859.50498)"><flowRegion
+           id="flowRegion3017"><rect
+             id="rect3019"
+             width="202.03047"
+             height="30.80965"
+             x="139.90613"
+             y="196.25887"
+             style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;text-anchor:start;font-family:Open Sans;-inkscape-font-specification:Open Sans" /></flowRegion><flowPara
+           id="flowPara3021"
+           style="font-size:12px;text-anchor:start;text-align:start">Defines all the operations that will be executed inside the function.</flowPara></flowRoot>    </g>
+  </g>
+</svg>
