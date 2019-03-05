@@ -130,6 +130,10 @@ This course will be divided into two main parts:
 
 The best way to learn programming and statistics is by practicing. After each concept, we will do exercises together.
 
+## Class notes
+
+http://www.pmassicotte.com/stats-denmark-2019/
+
 ## Installing R and RStudio
 
 *Download R* https://cran.r-project.org/
