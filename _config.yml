@@ -1,9 +1,2 @@
-remote_theme: qwtel/hydejack@v8.3.2
+theme: jekyll-theme-minimal
 
-plugins:
-  - jekyll-paginate
-  - jekyll-sitemap
-  - jekyll-gist
-  - jekyll-feed
-  - jemoji
-  - jekyll-include-cache
