@@ -1,6 +1,4 @@
-## Denmark 11-15 March of 2019
-
-Here is a description of the content of the class:
+## Course content
 
 1. [Course introduction](./01_introduction_course.html)
 2. [Introduction to R](./02_introduction_r.html)
