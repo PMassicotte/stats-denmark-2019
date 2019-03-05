@@ -1,4 +1,4 @@
-remote_theme: mmistakes/minimal-mistakes
+remote_theme: qwtel/hydejack@v8.3.2
 
 plugins:
   - jekyll-paginate
