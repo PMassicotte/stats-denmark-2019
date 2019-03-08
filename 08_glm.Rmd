@@ -828,7 +828,7 @@ exp(coef(glm_poisson))
 ```{r, echo = FALSE}
 df <- mutate(mpg, predicted = predicted_poisson) %>% 
   dplyr::select(displ, cyl, predicted) %>% 
-  filter(displ %in% c(2,3,4,5,6)) %>% 
+  dplyr::filter(displ %in% c(2,3,4,5,6)) %>% 
   unique() %>% 
   arrange(displ)
 ```

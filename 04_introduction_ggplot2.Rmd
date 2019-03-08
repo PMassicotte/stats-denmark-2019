@@ -265,7 +265,7 @@ There are two main types of one variable graphics:
 
 | **Graphic type** | **Geom**           | **Description**                          |
 |------------------|--------------------|------------------------------------------|
-| Histrogram       | `geom_histogram()` | Produces histograms for continuous data. |
+| Histogram        | `geom_histogram()` | Produces histograms for continuous data. |
 | Barplot          | `geom_bar()`       | Produces histograms for discrete data.   |
 
 ## Histogram
