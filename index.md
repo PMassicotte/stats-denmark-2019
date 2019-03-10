@@ -13,3 +13,7 @@ Teaching material for the lecture week (Aarhus University, Campus Roskilde).
 7. [Redundancy Analysis (RDA)](./07_rda.html)
 8. [Generalized Linear Models (GLM)](./08_glm.html)
 9. [Spatial autocorrelation](./09_spatial_autocorrelation.html)
+
+## Data
+
+You can download the data needed for the exercises ![here](https://github.com/PMassicotte/stats-denmark-2019/raw/master/data.zip)
