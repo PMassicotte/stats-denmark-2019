@@ -16,4 +16,4 @@ Teaching material for the lecture week (Aarhus University, Campus Roskilde).
 
 ## Data
 
-You can download the data needed for the exercises ![here](https://github.com/PMassicotte/stats-denmark-2019/raw/master/data.zip)
+You can download the data needed for the exercises [here](https://github.com/PMassicotte/stats-denmark-2019/raw/master/data.zip)
