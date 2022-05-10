@@ -23,12 +23,12 @@
   },
   "dependencies": {
     "express": "~4.13.3",
-    "grunt-cli": "~1.3.0",
+    "grunt-cli": "~1.5.2",
     "mustache": "~2.2.1",
     "socket.io": "~2.4.0"
   },
   "devDependencies": {
-    "grunt": "~1.3.0",
+    "grunt": "~1.5.2",
     "grunt-autoprefixer": "~3.0.3",
     "grunt-contrib-connect": "~0.11.2",
     "grunt-contrib-cssmin": "~0.14.0",
